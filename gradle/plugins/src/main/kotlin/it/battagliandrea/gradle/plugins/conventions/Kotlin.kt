@@ -51,7 +51,7 @@ internal fun Project.configureKotlinJvm() {
 }
 
 /**
- * Private function to configure Kotlin settings for a project.
+ * Private function to configure Kotlin settings for a project.=
  *
  * This function is used internally to set up Kotlin-related settings and configurations
  * for the project. It may include configuring Kotlin for different platforms or subprojects.
