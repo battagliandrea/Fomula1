@@ -16,6 +16,10 @@ gradlePlugin {
             id = "f1.jvm.library"
             implementationClass = "JvmPlugin"
         }
+        register("AndroidHiltPlugin") {
+            id = "f1.android.hilt"
+            implementationClass = "AndroidHiltPlugin"
+        }
         register("AndroidLibraryPlugin") {
             id = "f1.android.library"
             implementationClass = "AndroidLibraryPlugin"
