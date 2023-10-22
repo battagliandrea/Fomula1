@@ -9,3 +9,12 @@ dependencies {
     compileOnly(libs.kotlin.gradle.plugin)
     compileOnly(libs.ksp.gradle.plugin)
 }
+
+gradlePlugin {
+    plugins {
+        register("JvmPlugin") {
+            id = "f1.jvm.library"
+            implementationClass = "JvmPlugin"
+        }
+    }
+}
