@@ -4,6 +4,14 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    resolutionStrategy {
+        eachPlugin {
+            when(requested.id.id){
+                "dagger.hilt.android.plugin" -> useModule("com.google.dagger:hilt-android-gradle-plugin:${requested.version}")
+                "androidx.navigation.safeargs.kotlin" -> useModule("androidx.navigation:navigation-safe-args-gradle-plugin:${requested.version}")
+            }
+        }
+    }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -14,4 +22,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Formula1"
-include(":app")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+include(
+    ":app"
+)
