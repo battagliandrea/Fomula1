@@ -29,6 +29,7 @@ include(
     ":app",
     ":core:network:network-api",
     ":core:network:network-di",
+    ":domain:models",
     ":data:results:results-api",
     ":data:results:results-di",
     ":data:results:results-impl"
