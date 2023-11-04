@@ -2,6 +2,7 @@
 plugins {
     id("f1.android.application")
     id("f1.android.application.compose")
+    id("f1.android.hilt")
 }
 
 android {
@@ -30,11 +31,12 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.network.networkDi)
     implementation(projects.data.results.resultsDi)
+    implementation(projects.domain.models)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core)
-    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.core.splashscreen)
 
     implementation(libs.androidx.lifecycle.runtime)
