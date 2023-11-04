@@ -12,9 +12,9 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        register("JvmPlugin") {
+        register("KotlinJvmPlugin") {
             id = "f1.jvm.library"
-            implementationClass = "JvmPlugin"
+            implementationClass = "KotlinJvmPlugin"
         }
         register("AndroidHiltPlugin") {
             id = "f1.android.hilt"
