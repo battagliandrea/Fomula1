@@ -26,5 +26,8 @@ rootProject.name = "Formula1"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
-    ":app"
+    ":app",
+    ":data:results:results-api",
+    ":data:results:results-di",
+    ":data:results:results-impl"
 )

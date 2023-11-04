@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.data.results.resultsDi)
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)
