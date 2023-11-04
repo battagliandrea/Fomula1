@@ -2,4 +2,6 @@ plugins {
     id("f1.jvm.library")
 }
 
-dependencies {}
+dependencies {
+    implementation(projects.domain.models)
+}
