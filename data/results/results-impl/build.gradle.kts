@@ -1,5 +1,6 @@
 plugins {
     id("f1.android.library")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -7,5 +8,14 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.network.networkApi)
     implementation(projects.data.results.resultsApi)
+    implementation(projects.domain.models)
+
+    implementation(libs.javax.inject)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.serialization)
 }
