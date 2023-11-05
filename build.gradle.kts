@@ -57,4 +57,12 @@ subprojects {
     }
 }
 
+task("addPreCommitGitHookOnBuild") {
+    println("⚈ ⚈ ⚈ Running Add Pre Commit Git Hook Script on Build ⚈ ⚈ ⚈")
+    exec {
+        commandLine("cp", "./.hooks/pre-commit", "./.git/hooks")
+    }
+    println("✅ Added Pre Commit Git Hook Script.")
+}
+
 true // Needed to make the Suppress annotation work for the plugins block
