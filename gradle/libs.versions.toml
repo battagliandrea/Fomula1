@@ -10,10 +10,12 @@ dagger-hilt = "2.48"
 javax-inject = "1"
 kotlin = "1.9.10"
 kotlin-serialization = "1.6.0"
+ktlint = "1.0.1"
 ksp = "1.8.20-1.0.11"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 retrofit-serialization = "0.8.0"
+spotless = "6.22.0"
 
 [libraries]
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -56,3 +58,4 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
