@@ -10,18 +10,17 @@ import javax.inject.Singleton
 
 @Singleton
 class ResultsRepository @Inject constructor(
-    private val apiContract: ErgastApiContract
+    private val apiContract: ErgastApiContract,
 ) : IResultsRepository {
 
     override suspend fun getResults(
         year: Int,
         round: Int,
         limit: Int,
-        offset: Int
+        offset: Int,
     ): QueryResult<List<Race>> =
         apiContract.results(year = year, round = round, limit = limit, offset = offset).body()?.mRData.mapToDomain()
 
     override suspend fun getCurrentLastResult(): QueryResult<List<Race>> =
         apiContract.currentLastResults().body()?.mRData.mapToDomain()
-
 }

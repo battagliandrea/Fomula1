@@ -8,5 +8,5 @@ data class Race(
     val date: String,
     val time: String,
     val results: List<Result> = emptyList(),
-    val url: String = String()
+    val url: String = String(),
 )

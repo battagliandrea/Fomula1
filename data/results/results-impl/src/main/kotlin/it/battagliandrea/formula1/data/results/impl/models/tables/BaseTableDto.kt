@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class BaseResponse<out T>(
     @SerialName("MRData")
-    val mRData: T?
+    val mRData: T?,
 )
 
 sealed class DataDto {

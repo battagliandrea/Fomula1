@@ -19,5 +19,4 @@ interface ErgastApiContract {
 
     @GET("current/last/results.json")
     suspend fun currentLastResults(): Response<BaseResponse<DataRaceTableDto>>
-
 }

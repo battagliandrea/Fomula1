@@ -16,7 +16,7 @@ data class DataRaceTableDto(
     @SerialName("total")
     override val total: Long? = null,
     @SerialName("RaceTable")
-    val raceTable: RaceTableDto? = null
+    val raceTable: RaceTableDto? = null,
 ) : DataDto()
 
 @Serializable
@@ -36,5 +36,5 @@ fun DataRaceTableDto?.mapToDomain(): QueryResult<List<Race>> =
         total = this?.total ?: 0,
         data = this?.raceTable?.races?.map { race ->
             race.mapToDomain()
-        }.orEmpty()
+        }.orEmpty(),
     )

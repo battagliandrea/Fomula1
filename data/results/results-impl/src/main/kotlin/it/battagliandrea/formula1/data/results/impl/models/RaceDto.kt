@@ -35,6 +35,5 @@ fun RaceDto?.mapToDomain(): Race =
         results = this?.results?.map { res ->
             res.mapToDomain()
         }.orEmpty(),
-        url = this?.url.orEmpty()
+        url = this?.url.orEmpty(),
     )
-

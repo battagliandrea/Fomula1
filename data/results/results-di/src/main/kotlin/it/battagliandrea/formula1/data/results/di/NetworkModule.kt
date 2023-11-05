@@ -30,7 +30,7 @@ interface NetworkModule {
         @Singleton
         fun provideRetorif(json: Json, callFactory: Call.Factory) =
             Retrofit.Builder()
-                .baseUrl(it.battagliandrea.formula1.core.network.api.ErgastBaseUrl)
+                .baseUrl(it.battagliandrea.formula1.core.network.api.ERGAST_BASE_URL)
                 .callFactory(callFactory)
                 .addConverterFactory(
                     json.asConverterFactory("application/json".toMediaType()),
@@ -38,5 +38,4 @@ interface NetworkModule {
                 .build()
                 .create(ErgastApiContract::class.java)
     }
-
 }

@@ -22,7 +22,7 @@ interface IResultsRepository {
         year: Int,
         round: Int,
         limit: Int = 0,
-        offset: Int = 50
+        offset: Int = 50,
     ): QueryResult<List<Race>>
 
     /**

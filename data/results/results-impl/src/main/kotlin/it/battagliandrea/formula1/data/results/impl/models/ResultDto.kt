@@ -41,5 +41,5 @@ fun ResultDto?.mapToDomain(): Result =
         laps = this?.laps ?: 0,
         status = this?.status.orEmpty(),
         time = this?.time.mapToDomain(),
-        fastestLap = this?.fastestLap.mapToDomain()
+        fastestLap = this?.fastestLap.mapToDomain(),
     )

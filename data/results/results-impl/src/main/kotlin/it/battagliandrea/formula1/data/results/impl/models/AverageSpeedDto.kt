@@ -17,4 +17,3 @@ fun AverageSpeedDto?.mapToDomain(): AverageSpeed =
         units = this?.units.orEmpty(),
         speed = this?.speed.orEmpty(),
     )
-
