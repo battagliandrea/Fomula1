@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
     implementation(projects.domain.models)
+
+    implementation(libs.kotlinx.coroutines.core.jvm)
 }

@@ -28,7 +28,7 @@ interface NetworkModule {
         @OptIn(ExperimentalSerializationApi::class)
         @Provides
         @Singleton
-        fun provideRetorif(json: Json, callFactory: Call.Factory) =
+        fun provideRetrofit(json: Json, callFactory: Call.Factory): ErgastApiContract =
             Retrofit.Builder()
                 .baseUrl(it.battagliandrea.formula1.core.network.api.ERGAST_BASE_URL)
                 .callFactory(callFactory)
