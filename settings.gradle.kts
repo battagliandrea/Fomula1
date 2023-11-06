@@ -27,6 +27,8 @@ rootProject.name = "Formula1"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
     ":app",
+    ":core:dispatcher:dispatcher-api",
+    ":core:dispatcher:dispatcher-di",
     ":core:network:network-api",
     ":core:network:network-di",
     ":domain:models",

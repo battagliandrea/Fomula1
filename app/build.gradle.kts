@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.dispatcher.dispatcherDi)
     implementation(projects.core.network.networkDi)
     implementation(projects.data.results.resultsDi)
     implementation(projects.domain.models)
