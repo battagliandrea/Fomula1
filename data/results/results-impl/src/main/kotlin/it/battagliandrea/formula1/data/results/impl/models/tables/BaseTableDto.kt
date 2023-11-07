@@ -9,6 +9,7 @@ data class BaseResponse<out T>(
     val mRData: T?,
 )
 
+@Serializable
 sealed class DataDto {
     abstract val limit: Long?
     abstract val offset: Long?

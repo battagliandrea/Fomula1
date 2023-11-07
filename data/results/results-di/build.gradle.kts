@@ -12,10 +12,4 @@ dependencies {
     api(projects.data.results.resultsImpl)
 
     implementation(projects.core.network.networkApi)
-
-    implementation(libs.kotlinx.serialization)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.serialization)
 }
