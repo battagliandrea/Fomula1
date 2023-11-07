@@ -5,7 +5,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
-object NetworkProvider {
+object Client {
+
+    const val ERGAST_BASE_URL: String = BuildConfig.BASE_URL
 
     val jsonConfiguration = Json {
         isLenient = true

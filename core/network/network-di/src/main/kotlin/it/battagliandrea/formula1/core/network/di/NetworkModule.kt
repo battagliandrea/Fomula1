@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import it.battagliandrea.formula1.core.network.api.NetworkProvider
+import it.battagliandrea.formula1.core.network.api.Client
 import kotlinx.serialization.json.Json
 import okhttp3.Call
 import javax.inject.Singleton
@@ -15,9 +15,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesJson(): Json = NetworkProvider.jsonConfiguration
+    fun providesJson(): Json = Client.jsonConfiguration
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): Call.Factory = NetworkProvider.httpClient
+    fun provideOkHttpClient(): Call.Factory = Client.httpClient
 }
