@@ -1,4 +1,4 @@
-package it.battagliandrea.gradle.plugins.versions
+package it.battagliandrea.gradle.plugins.conventions
 /**
  * Object containing Android SDK configuration constants for a project.
  *
@@ -6,7 +6,7 @@ package it.battagliandrea.gradle.plugins.versions
  * - `targetSdk`: The Android SDK version targeted by the application.
  * - `minSdk`: The minimum Android SDK version required for the application.
  */
-object AndroidSdkConfig {
+object AndroidSdk {
     const val compileSdk = 34
     const val targetSdk = 34
     const val minSdk = 24

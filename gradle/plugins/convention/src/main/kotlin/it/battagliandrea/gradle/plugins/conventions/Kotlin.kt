@@ -1,7 +1,6 @@
 package it.battagliandrea.gradle.plugins.conventions
 
 import com.android.build.api.dsl.CommonExtension
-import it.battagliandrea.gradle.plugins.versions.AndroidSdkConfig
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension
@@ -20,10 +19,10 @@ internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
-        compileSdk = AndroidSdkConfig.compileSdk
+        compileSdk = AndroidSdk.compileSdk
 
         defaultConfig {
-            minSdk = AndroidSdkConfig.minSdk
+            minSdk = AndroidSdk.minSdk
         }
 
         compileOptions {

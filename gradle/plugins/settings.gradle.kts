@@ -10,3 +10,6 @@ dependencyResolutionManagement {
         }
     }
 }
+
+rootProject.name = "plugins"
+include(":convention")

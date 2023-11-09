@@ -1,6 +1,6 @@
 import com.android.build.api.dsl.ApplicationExtension
+import it.battagliandrea.gradle.plugins.conventions.AndroidSdk
 import it.battagliandrea.gradle.plugins.conventions.configureKotlinAndroid
-import it.battagliandrea.gradle.plugins.versions.AndroidSdkConfig
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -23,7 +23,7 @@ class AndroidApplicationPlugin: Plugin<Project> {
 
         extensions.configure(ApplicationExtension::class){
             configureKotlinAndroid(this)
-            defaultConfig.targetSdk = AndroidSdkConfig.targetSdk
+            defaultConfig.targetSdk = AndroidSdk.targetSdk
 
             packaging {
                 resources {
