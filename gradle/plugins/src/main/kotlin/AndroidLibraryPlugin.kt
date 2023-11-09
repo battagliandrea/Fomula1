@@ -17,6 +17,7 @@ class AndroidLibraryPlugin: Plugin<Project> {
         with(pluginManager) {
             apply("com.android.library")
             apply("org.jetbrains.kotlin.android")
+            apply("f1.spotless")
         }
 
         extensions.configure<LibraryExtension> {

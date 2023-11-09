@@ -8,6 +8,7 @@ dependencies {
     compileOnly(libs.android.gradle.plugin)
     compileOnly(libs.kotlin.gradle.plugin)
     compileOnly(libs.ksp.gradle.plugin)
+    compileOnly(libs.spotless)
 }
 
 gradlePlugin {
@@ -35,6 +36,10 @@ gradlePlugin {
         register("AndroidApplicationComposePlugin") {
             id = "f1.android.application.compose"
             implementationClass = "AndroidApplicationComposePlugin"
+        }
+        register("SpotlessPlugin") {
+            id = "f1.spotless"
+            implementationClass = "SpotlessPlugin"
         }
     }
 }
