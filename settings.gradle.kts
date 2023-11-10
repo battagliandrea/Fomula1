@@ -31,6 +31,8 @@ include(
     ":core:dispatcher:dispatcher-di",
     ":core:network:network-api",
     ":core:network:network-di",
+    ":core:network:network-test",
+    ":core:test",
     ":domain:models",
     ":data:results:results-api",
     ":data:results:results-di",

@@ -8,6 +8,7 @@ compose-bom = "2023.10.01"
 compose-compiler = "1.5.3"
 dagger-hilt = "2.48"
 javax-inject = "1"
+junit = "4.13.2"
 kotlin = "1.9.10"
 kotlin-coroutines = "1.7.3"
 kotlin-serialization = "1.6.0"
@@ -41,11 +42,14 @@ androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle
 dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger-hilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger-hilt" }
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax-inject"}
+junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-core-jvm = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-jvm", version.ref = "kotlin-coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp"}
+okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp"}
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 retrofit-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-serialization"}
 sandwich = { group = "com.github.skydoves", name = "sandwich-retrofit", version.ref = "sandwich"}

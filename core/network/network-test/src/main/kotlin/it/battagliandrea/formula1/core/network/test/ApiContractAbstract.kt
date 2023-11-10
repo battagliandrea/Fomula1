@@ -1,0 +1,71 @@
+package it.battagliandrea.formula1.core.network.test
+
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
+import it.battagliandrea.formula1.core.test.MainDispatcherRule
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.mockwebserver.MockResponse
+import okhttp3.mockwebserver.MockWebServer
+import okio.buffer
+import okio.source
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
+import retrofit2.Retrofit
+import java.nio.charset.StandardCharsets
+
+@RunWith(JUnit4::class)
+abstract class ApiContractAbstract<T> {
+
+    @get:Rule
+    val coroutinesRule = MainDispatcherRule()
+
+    lateinit var mockWebServer: MockWebServer
+
+    private val json by lazy {
+        Json {
+            isLenient = true
+            ignoreUnknownKeys = true
+        }
+    }
+
+    @Before
+    fun mockServer() {
+        mockWebServer = MockWebServer()
+        mockWebServer.start()
+    }
+
+    @After
+    fun stopServer() {
+        mockWebServer.shutdown()
+    }
+
+    fun enqueueResponse(fileName: String, code: Int = 200) {
+        val inputStream = javaClass.classLoader!!.getResourceAsStream("api/$fileName")
+        val source = inputStream!!.source().buffer()
+
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(code)
+                .setBody(source.readString(StandardCharsets.UTF_8)),
+        )
+    }
+
+    @OptIn(ExperimentalSerializationApi::class)
+    fun createService(clazz: Class<T>): T {
+        return Retrofit.Builder()
+            .baseUrl(mockWebServer.url("/"))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .addCallAdapterFactory(
+                ApiResponseCallAdapterFactory.create(
+                    coroutineScope = coroutinesRule.testScope,
+                ),
+            )
+            .build()
+            .create(clazz)
+    }
+}
