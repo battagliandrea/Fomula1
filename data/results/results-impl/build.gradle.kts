@@ -21,4 +21,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.serialization)
     implementation(libs.sandwich)
+
+    testImplementation(projects.core.test)
+    testImplementation(projects.core.network.networkTest)
 }
