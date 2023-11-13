@@ -9,6 +9,6 @@ data class Result(
     val grid: Int,
     val laps: Int,
     val status: String,
-    val time: Time,
-    val fastestLap: FastestLap,
+    val time: RaceTime? = null,
+    val fastestLap: FastestLap? = null,
 )

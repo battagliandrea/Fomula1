@@ -24,8 +24,8 @@ data class ResultDto(
     val laps: Int? = null,
     @SerialName("status")
     val status: String? = null,
-    @SerialName("Time")
-    val time: TimeDto? = null,
+    @SerialName("time")
+    val time: RaceTimeDto? = null,
     @SerialName("FastestLap")
     val fastestLap: FastestLapDto? = null,
 )
@@ -40,6 +40,6 @@ fun ResultDto?.mapToDomain(): Result =
         grid = this?.grid ?: 0,
         laps = this?.laps ?: 0,
         status = this?.status.orEmpty(),
-        time = this?.time.mapToDomain(),
-        fastestLap = this?.fastestLap.mapToDomain(),
+        time = this?.time?.mapToDomain(),
+        fastestLap = this?.fastestLap?.mapToDomain(),
     )

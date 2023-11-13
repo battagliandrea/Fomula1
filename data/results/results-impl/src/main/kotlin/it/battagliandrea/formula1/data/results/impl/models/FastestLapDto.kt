@@ -10,16 +10,16 @@ data class FastestLapDto(
     val rank: Int? = null,
     @SerialName("lap")
     val lap: Int? = null,
-    @SerialName("Time")
-    val time: TimeDto? = null,
+    @SerialName("time")
+    val time: LapTimeDto? = null,
     @SerialName("AverageSpeed")
     val averageSpeed: AverageSpeedDto? = null,
 )
 
-fun FastestLapDto?.mapToDomain(): FastestLap =
+fun FastestLapDto.mapToDomain(): FastestLap =
     FastestLap(
-        rank = this?.rank ?: 0,
-        lap = this?.lap ?: 0,
-        time = this?.time.mapToDomain(),
-        averageSpeed = this?.averageSpeed.mapToDomain(),
+        rank = this.rank ?: 0,
+        lap = this.lap ?: 0,
+        time = this.time.mapToDomain(),
+        averageSpeed = this.averageSpeed.mapToDomain(),
     )
