@@ -86,7 +86,7 @@ internal object MockUtils {
 
     fun mockRaceTime() =
         RaceTimeDto(
-            millis = "7017171",
+            millis = 7008894,
             time = "1:56:48.894",
         )
 

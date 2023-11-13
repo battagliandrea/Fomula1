@@ -1,6 +1,7 @@
 package it.battagliandrea.formula1.data.results.impl.models
 
 import it.battagliandrea.formula1.domain.models.Driver
+import kotlinx.datetime.toLocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -31,7 +32,7 @@ fun DriverDto?.mapToDomain(): Driver =
         code = this?.code.orEmpty(),
         name = this?.givenName.orEmpty(),
         lastName = this?.familyName.orEmpty(),
-        dateOfBirth = this?.dateOfBirth.orEmpty(),
+        dateOfBirth = this?.dateOfBirth?.toLocalDate(),
         nationality = this?.nationality.orEmpty(),
         url = this?.url.orEmpty(),
     )
