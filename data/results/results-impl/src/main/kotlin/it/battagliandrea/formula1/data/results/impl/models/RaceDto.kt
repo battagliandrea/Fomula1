@@ -1,6 +1,8 @@
 package it.battagliandrea.formula1.data.results.impl.models
 
+import it.battagliandrea.formula1.core.datetime.toRaceTime
 import it.battagliandrea.formula1.domain.models.Race
+import kotlinx.datetime.toLocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -30,8 +32,8 @@ fun RaceDto?.mapToDomain(): Race =
         round = this?.round ?: 0,
         name = this?.raceName.orEmpty(),
         circuit = this?.circuit.mapToDomain(),
-        date = this?.date.orEmpty(),
-        time = this?.time.orEmpty(),
+        date = this?.date?.toLocalDate(),
+        time = this?.time?.toRaceTime(),
         results = this?.results?.map { res ->
             res.mapToDomain()
         }.orEmpty(),

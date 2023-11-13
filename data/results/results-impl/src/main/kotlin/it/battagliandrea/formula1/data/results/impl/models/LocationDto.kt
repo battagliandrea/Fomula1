@@ -1,6 +1,6 @@
 package it.battagliandrea.formula1.data.results.impl.models
 
-import it.battagliandrea.formula1.domain.models.Time
+import it.battagliandrea.formula1.domain.models.Location
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -16,8 +16,10 @@ data class LocationDto(
     val country: String? = null,
 )
 
-fun TimeDto?.mapToDomain(): Time =
-    Time(
-        millis = this?.millis.orEmpty(),
-        time = this?.time.orEmpty(),
+fun LocationDto?.mapToDomain(): Location =
+    Location(
+        lat = this?.lat ?: 0.0,
+        lng = this?.long ?: 0.0,
+        locality = this?.locality.orEmpty(),
+        country = this?.country.orEmpty(),
     )

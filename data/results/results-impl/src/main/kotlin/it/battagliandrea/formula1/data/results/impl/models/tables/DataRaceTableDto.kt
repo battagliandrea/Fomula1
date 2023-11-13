@@ -22,9 +22,9 @@ data class DataRaceTableDto(
 @Serializable
 data class RaceTableDto(
     @SerialName("season")
-    val season: String? = null,
+    val season: Long? = null,
     @SerialName("round")
-    val round: String? = null,
+    val round: Int? = null,
     @SerialName("Races")
     val races: List<RaceDto>? = null,
 )

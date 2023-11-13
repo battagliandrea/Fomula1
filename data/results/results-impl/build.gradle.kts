@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.datetime)
     implementation(projects.core.dispatcher.dispatcherApi)
     implementation(projects.core.network.networkApi)
     implementation(projects.data.results.resultsApi)
