@@ -1,4 +1,4 @@
-package it.battagliandrea.formula1.data.results.impl
+package it.battagliandrea.formula1.data.results.impl.repository
 
 import app.cash.turbine.test
 import com.skydoves.sandwich.ApiResponse
@@ -8,7 +8,6 @@ import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
 import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
 import it.battagliandrea.formula1.data.results.impl.models.MockUtils
 import it.battagliandrea.formula1.data.results.impl.models.tables.BaseResponse
-import it.battagliandrea.formula1.data.results.impl.repository.ResultsRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
