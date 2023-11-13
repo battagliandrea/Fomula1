@@ -7,4 +7,5 @@ dependencies {
     api(libs.kotlinx.coroutines.test)
     api(libs.mockito.core)
     api(libs.mockito.kotlin)
+    api(libs.turbine)
 }
