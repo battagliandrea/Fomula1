@@ -19,6 +19,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
+    @Provides
+    @Singleton
+    fun providesJson(): Json = Json {
+        isLenient = true
+        ignoreUnknownKeys = true
+    }
+
     @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Singleton

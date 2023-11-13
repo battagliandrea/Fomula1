@@ -13,5 +13,4 @@ dependencies {
     api(projects.core.network.networkApi)
 
     implementation(libs.kotlinx.serialization)
-    implementation(libs.okhttp)
 }

@@ -13,8 +13,4 @@ dependencies {
 
     implementation(projects.core.network.networkApi)
     implementation(libs.kotlinx.serialization)
-    implementation(libs.okhttp)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.serialization)
-    implementation(libs.sandwich)
 }
