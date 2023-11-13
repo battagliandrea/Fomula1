@@ -1,6 +1,5 @@
 package it.battagliandrea.formula1.core.network.api
 
-import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -8,11 +7,6 @@ import java.util.concurrent.TimeUnit
 object Client {
 
     const val ERGAST_BASE_URL: String = BuildConfig.BASE_URL
-
-    val jsonConfiguration = Json {
-        isLenient = true
-        ignoreUnknownKeys = true
-    }
 
     val httpClient = OkHttpClient.Builder()
         .connectTimeout(15, TimeUnit.SECONDS)

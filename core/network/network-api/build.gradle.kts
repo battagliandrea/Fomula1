@@ -18,10 +18,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.kotlinx.serialization)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.serialization)
-    implementation(libs.sandwich)
+    api(libs.okhttp)
+    api(libs.okhttp.logging)
+    api(libs.retrofit)
+    api(libs.retrofit.serialization)
+    api(libs.sandwich)
 }

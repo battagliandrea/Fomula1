@@ -16,11 +16,6 @@ dependencies {
     implementation(libs.javax.inject)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.serialization)
-    implementation(libs.sandwich)
 
     testImplementation(projects.core.test)
     testImplementation(projects.core.network.networkTest)

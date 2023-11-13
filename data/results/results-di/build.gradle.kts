@@ -12,4 +12,5 @@ dependencies {
     api(projects.data.results.resultsImpl)
 
     implementation(projects.core.network.networkApi)
+    implementation(libs.kotlinx.serialization)
 }
