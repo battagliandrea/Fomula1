@@ -34,6 +34,7 @@ include(
     ":core:network:network-test",
     ":core:test",
     ":domain:models",
+    ":domain:test",
     ":data:results:results-api",
     ":data:results:results-di",
     ":data:results:results-impl"
