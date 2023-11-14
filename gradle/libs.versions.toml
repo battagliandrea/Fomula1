@@ -15,11 +15,14 @@ kotlin-datetime = "0.4.1"
 kotlin-serialization = "1.6.0"
 ktlint = "1.0.1"
 ksp = "1.8.20-1.0.11"
+mockito = "5.7.0"
+mockito-kotlin = "5.1.0"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
 retrofit-serialization = "0.8.0"
 sandwich = "2.0.1"
 spotless = "6.22.0"
+turbine = "1.0.0"
 
 [libraries]
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -49,12 +52,15 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlin-datetime" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+mockito-core  = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-kotlin  = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito-kotlin" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp"}
 okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp"}
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 retrofit-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-serialization"}
 sandwich = { group = "com.github.skydoves", name = "sandwich-retrofit", version.ref = "sandwich"}
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
 
 # Dependencies of the included gradle/plugins
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }

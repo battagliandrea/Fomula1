@@ -1,8 +1,7 @@
-package it.battagliandrea.formula1.data.results.impl
+package it.battagliandrea.formula1.data.results.impl.datasource
 
 import com.skydoves.sandwich.ApiResponse
 import it.battagliandrea.formula1.core.network.test.ApiContractAbstract
-import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
 import it.battagliandrea.formula1.data.results.impl.models.tables.DataRaceTableDto
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.instanceOf

@@ -32,7 +32,7 @@ data class RaceTableDto(
 fun DataRaceTableDto?.mapToDomain(): QueryResult<List<Race>> =
     QueryResult(
         limit = this?.limit ?: 0,
-        offset = this?.limit ?: 0,
+        offset = this?.offset ?: 0,
         total = this?.total ?: 0,
         data = this?.raceTable?.races?.map { race ->
             race.mapToDomain()
