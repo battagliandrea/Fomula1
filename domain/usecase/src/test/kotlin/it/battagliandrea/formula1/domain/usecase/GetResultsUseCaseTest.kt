@@ -3,13 +3,12 @@ package it.battagliandrea.formula1.domain.usecase
 import app.cash.turbine.test
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
 import it.battagliandrea.formula1.domain.models.MockUtils.mockQueryResult
 import it.battagliandrea.formula1.domain.models.QueryResult
 import it.battagliandrea.formula1.domain.models.Race
-import it.battagliandrea.formula1.domain.usecase.GetCurrentLastResultUseCase.Params
+import it.battagliandrea.formula1.domain.usecase.GetResultsUseCase.Params
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
@@ -24,9 +23,9 @@ import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
 @RunWith(JUnit4::class)
-class GetCurrentLastResultUseCaseTest {
+class GetResultsUseCaseTest {
 
-    private lateinit var useCase: GetCurrentLastResultUseCase
+    private lateinit var useCase: GetResultsUseCase
     private val resultRepository: IResultsRepository = mockk()
 
     @get:Rule
@@ -34,7 +33,7 @@ class GetCurrentLastResultUseCaseTest {
 
     @Before
     fun setup() {
-        useCase = GetCurrentLastResultUseCase(
+        useCase = GetResultsUseCase(
             resultsRepository = resultRepository,
         )
     }
@@ -42,11 +41,20 @@ class GetCurrentLastResultUseCaseTest {
     @Test
     fun executeTest() = runTest {
         val mockFlow = flowOf(mockQueryResult())
+        val input = Params(year = 2023, round = 20)
 
-        every { resultRepository.getCurrentLastResult(any(), any(), any()) }.returns(mockFlow)
+        every {
+            resultRepository.getResults(
+                year = input.year,
+                round = input.round,
+                onStart = any(),
+                onError = any(),
+                onComplete = any(),
+            )
+        }.returns(mockFlow)
 
         useCase.execute(
-            params = Params,
+            params = input,
             onStart = {},
             onError = {},
             onComplete = {},
@@ -63,29 +71,30 @@ class GetCurrentLastResultUseCaseTest {
             assertEquals("red_bull", expectItem.data.first().results.first().constructor.id)
             awaitComplete()
         }
-
-        verify(atLeast = 1) {
-            resultRepository.getCurrentLastResult(onStart = any(), onError = any(), onComplete = any())
-        }
     }
 
     @Test
     fun executeErrorTest() = runTest {
         val mockFlow = flow<QueryResult<List<Race>>> { throw RuntimeException("broken!") }
+        val input = Params(year = 2023, round = 20)
 
-        every { resultRepository.getCurrentLastResult(any(), any(), any()) }.returns(mockFlow)
+        every {
+            resultRepository.getResults(
+                year = input.year,
+                round = input.round,
+                onStart = any(),
+                onError = any(),
+                onComplete = any(),
+            )
+        } returns (mockFlow)
 
         useCase.execute(
-            params = Params,
+            params = input,
             onStart = {},
             onError = {},
             onComplete = {},
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             assertEquals("broken!", awaitError().message)
-        }
-
-        verify(atLeast = 1) {
-            resultRepository.getCurrentLastResult(onStart = any(), onError = any(), onComplete = any())
         }
     }
 }
