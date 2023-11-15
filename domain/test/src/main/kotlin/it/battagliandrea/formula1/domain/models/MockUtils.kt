@@ -6,6 +6,15 @@ import kotlinx.datetime.toLocalDate
 
 object MockUtils {
 
+    fun mockQueryResult() = QueryResult(
+        limit = 30,
+        offset = 0,
+        total = 20,
+        data = mockRaceList(),
+    )
+
+    fun mockRaceList() = listOf(mockRace())
+
     fun mockRace() = Race(
         season = 2023,
         round = 20,

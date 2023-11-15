@@ -26,7 +26,7 @@ class ResultsRepository @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : IResultsRepository {
 
-    override suspend fun getResults(
+    override fun getResults(
         year: Int,
         round: Int,
         limit: Int,
@@ -45,7 +45,7 @@ class ResultsRepository @Inject constructor(
             .onException { onError(message) }
     }.onStart { onStart() }.onCompletion { onComplete() }.flowOn(ioDispatcher)
 
-    override suspend fun getCurrentLastResult(
+    override fun getCurrentLastResult(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
