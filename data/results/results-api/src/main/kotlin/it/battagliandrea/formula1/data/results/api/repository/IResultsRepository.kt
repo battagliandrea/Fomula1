@@ -21,7 +21,7 @@ interface IResultsRepository {
      * @param onError A callback function to handle any error that may occur during data retrieval.
      * @return A [Flow] emitting [QueryResult] objects containing paginated lists of [Race] objects for the specified year and round.
      */
-    suspend fun getResults(
+    fun getResults(
         year: Int,
         round: Int,
         limit: Int = 0,
@@ -39,7 +39,7 @@ interface IResultsRepository {
      * @param onError A callback function to handle any error that may occur during data retrieval.
      * @return A [Flow] emitting [QueryResult] containing a list of [Race] objects.
      */
-    suspend fun getCurrentLastResult(
+    fun getCurrentLastResult(
         onStart: () -> Unit,
         onComplete: () -> Unit,
         onError: (String?) -> Unit,
