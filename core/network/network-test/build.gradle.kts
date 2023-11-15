@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.core.test)
+    implementation(projects.core.test.testJvm)
     implementation(libs.kotlinx.serialization)
     implementation(libs.okhttp)
     implementation(libs.okhttp.mockwebserver)
