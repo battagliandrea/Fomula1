@@ -8,4 +8,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.data.results.resultsApi)
+    implementation(projects.domain.models)
+
+    implementation(libs.javax.inject)
 }
