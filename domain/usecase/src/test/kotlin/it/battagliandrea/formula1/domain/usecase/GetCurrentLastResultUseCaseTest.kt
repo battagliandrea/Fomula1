@@ -1,0 +1,3 @@
+package it.battagliandrea.formula1.domain.usecase
+
+class GetCurrentLastResultUseCaseTest
