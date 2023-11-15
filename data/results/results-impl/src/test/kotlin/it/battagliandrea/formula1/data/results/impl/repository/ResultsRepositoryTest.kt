@@ -3,6 +3,9 @@ package it.battagliandrea.formula1.data.results.impl.repository
 import app.cash.turbine.test
 import com.skydoves.sandwich.ApiResponse
 import com.skydoves.sandwich.retrofit.responseOf
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.mockk
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
 import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
@@ -16,10 +19,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.kotlin.atLeastOnce
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
 import retrofit2.Response
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
@@ -28,7 +27,7 @@ import kotlin.time.toDuration
 class ResultsRepositoryTest {
 
     private lateinit var repository: IResultsRepository
-    private var apiContract: ErgastApiContract = mock()
+    private var apiContract: ErgastApiContract = mockk()
 
     @get:Rule
     val coroutinesRule = MainDispatcherRule()
@@ -47,13 +46,12 @@ class ResultsRepositoryTest {
             mRData = MockUtils.mockDataRaceTableDto(),
         )
 
-        whenever(apiContract.results(year = 2023, round = 20, limit = 20, offset = 0))
-            .thenReturn(
-                ApiResponse.responseOf {
-                    Response.success(
-                        mockData,
-                    )
-                },
+        coEvery { apiContract.results(year = 2023, round = 20, limit = 20, offset = 0) } returns(
+            ApiResponse.responseOf {
+                Response.success(
+                    mockData,
+                )
+            }
             )
 
         repository.getResults(
@@ -78,7 +76,7 @@ class ResultsRepositoryTest {
             awaitComplete()
         }
 
-        verify(apiContract, atLeastOnce()).results(year = 2023, round = 20, limit = 20, offset = 0)
+        coVerify(atLeast = 1) { apiContract.results(year = 2023, round = 20, limit = 20, offset = 0) }
     }
 
     @Test
@@ -87,13 +85,12 @@ class ResultsRepositoryTest {
             mRData = MockUtils.mockDataRaceTableDto(),
         )
 
-        whenever(apiContract.currentLastResults())
-            .thenReturn(
-                ApiResponse.responseOf {
-                    Response.success(
-                        mockData,
-                    )
-                },
+        coEvery { apiContract.currentLastResults() } returns (
+            ApiResponse.responseOf {
+                Response.success(
+                    mockData,
+                )
+            }
             )
 
         repository.getCurrentLastResult(
@@ -114,6 +111,6 @@ class ResultsRepositoryTest {
             awaitComplete()
         }
 
-        verify(apiContract, atLeastOnce()).currentLastResults()
+        coVerify(atLeast = 1) { apiContract.currentLastResults() }
     }
 }
