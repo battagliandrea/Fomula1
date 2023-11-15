@@ -37,6 +37,7 @@ include(
     ":core:test:test-jvm",
     ":domain:models",
     ":domain:test",
+    ":domain:usecase",
     ":data:results:results-api",
     ":data:results:results-di",
     ":data:results:results-impl"
