@@ -12,4 +12,7 @@ dependencies {
     implementation(projects.domain.models)
 
     implementation(libs.javax.inject)
+
+    testImplementation(projects.core.test.testAndroid)
+    testImplementation(projects.domain.test)
 }
