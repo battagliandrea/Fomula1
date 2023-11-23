@@ -35,11 +35,11 @@ dependencies {
     implementation(projects.core.network.networkDi)
     implementation(projects.data.results.resultsDi)
     implementation(projects.domain.models)
+    implementation(projects.feature.main.mainUi)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)
-
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.compose.material3)
