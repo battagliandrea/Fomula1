@@ -41,5 +41,8 @@ include(
     ":data:results:results-api",
     ":data:results:results-di",
     ":data:results:results-impl",
-    ":feature:main:main-ui"
+    ":feature:main:main-ui",
+    ":feature:results:results-ui",
+    ":feature:schedule:schedule-ui",
+    ":feature:standings:standings-ui",
 )

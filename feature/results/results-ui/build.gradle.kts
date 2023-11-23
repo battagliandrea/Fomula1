@@ -5,14 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "it.battagliandrea.formula1.feature.main"
+    namespace = "it.battagliandrea.formula1.feature.results.ui"
 }
 
 dependencies {
     implementation(projects.domain.usecase)
-    implementation(projects.feature.results.resultsUi)
-    implementation(projects.feature.schedule.scheduleUi)
-    implementation(projects.feature.standings.standingsUi)
 
     implementation(libs.androidx.lifecycle.runtime)
     implementation(libs.androidx.lifecycle.viewmodel)
@@ -21,7 +18,4 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.appyx.backstack.android)
-    implementation(libs.appyx.navigation)
-    implementation(libs.appyx.spotlight.android)
 }

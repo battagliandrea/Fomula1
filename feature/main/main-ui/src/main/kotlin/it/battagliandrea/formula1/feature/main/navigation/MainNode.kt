@@ -21,6 +21,9 @@ import com.bumble.appyx.navigation.node.node
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Results
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Schedule
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Standings
+import it.battagliandrea.formula1.feature.results.ui.ResultsScreen
+import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleScreen
+import it.battagliandrea.formula1.feature.standings.ui.StandindsScreen
 
 class MainNode(
     buildContext: BuildContext,
@@ -37,9 +40,9 @@ class MainNode(
 ) {
     override fun resolve(interactionTarget: MainNavTarget, buildContext: BuildContext): Node =
         when (interactionTarget) {
-            Schedule -> node(buildContext) { Text(text = "Placeholder for SCHEDULE") }
-            Results -> node(buildContext) { Text(text = "Placeholder for RESULT") }
-            Standings -> node(buildContext) { Text(text = "Placeholder for STANDINGS") }
+            Schedule -> node(buildContext) { ScheduleScreen() }
+            Results -> node(buildContext) { ResultsScreen() }
+            Standings -> node(buildContext) { StandindsScreen() }
         }
 
     @Composable
