@@ -47,4 +47,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.appyx.backstack.android)
+    implementation(libs.appyx.navigation)
+    implementation(libs.appyx.spotlight.android)
 }
