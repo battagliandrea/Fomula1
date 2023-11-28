@@ -26,7 +26,7 @@ rootProject.name = "Formula1"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
-    ":app",
+    /* ...projectPaths = */ ":app",
     ":core:datetime",
     ":core:dispatcher:dispatcher-api",
     ":core:dispatcher:dispatcher-di",
@@ -40,5 +40,9 @@ include(
     ":domain:usecase",
     ":data:results:results-api",
     ":data:results:results-di",
-    ":data:results:results-impl"
+    ":data:results:results-impl",
+    ":feature:main:main-ui",
+    ":feature:results:results-ui",
+    ":feature:schedule:schedule-ui",
+    ":feature:standings:standings-ui",
 )

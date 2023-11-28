@@ -4,6 +4,7 @@ androidx-activity-compose = "1.8.1"
 androidx-core = "1.12.0"
 androidx-lifecycle = "2.6.2"
 androidx-splashscsreen = "1.0.1"
+appyx = "2.0.0-alpha09"
 compose-bom = "2023.10.01"
 compose-compiler = "1.5.4"
 dagger-hilt = "2.48.1"
@@ -35,6 +36,9 @@ androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+appyx-backstack-android = { group = "com.bumble.appyx", name = "backstack-android", version.ref = "appyx" }
+appyx-navigation = { group = "com.bumble.appyx", name = "appyx-navigation", version.ref = "appyx" }
+appyx-spotlight-android = { group = "com.bumble.appyx", name = "spotlight-android", version.ref = "appyx" }
 dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger-hilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger-hilt" }
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javax-inject"}
@@ -67,5 +71,6 @@ dagger-hilt = { id = "dagger.hilt.android.plugin", version.ref = "dagger-hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-percelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
