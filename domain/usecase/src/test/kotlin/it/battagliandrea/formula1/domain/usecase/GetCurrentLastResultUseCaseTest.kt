@@ -4,10 +4,11 @@ import app.cash.turbine.test
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import it.battagliandrea.formula1.core.resource.Resource
+import it.battagliandrea.formula1.core.resource.toResourceSuccess
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
-import it.battagliandrea.formula1.domain.models.MockUtils.mockQueryResult
-import it.battagliandrea.formula1.domain.models.QueryResult
+import it.battagliandrea.formula1.domain.models.MockUtils.mockRaceList
 import it.battagliandrea.formula1.domain.models.Race
 import it.battagliandrea.formula1.domain.usecase.GetCurrentLastResultUseCase.Params
 import kotlinx.coroutines.flow.flow
@@ -41,20 +42,15 @@ class GetCurrentLastResultUseCaseTest {
 
     @Test
     fun executeTest() = runTest {
-        val mockFlow = flowOf(mockQueryResult())
+        val mockFlow = flowOf(mockRaceList().toResourceSuccess())
 
-        every { resultRepository.getCurrentLastResult(any(), any(), any()) }.returns(mockFlow)
+        every { resultRepository.getCurrentLastResult() }.returns(mockFlow)
 
-        useCase.execute(
+        useCase.invoke(
             params = Params,
-            onStart = {},
-            onError = {},
-            onComplete = {},
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
-            assertEquals(30, expectItem.limit)
-            assertEquals(0, expectItem.offset)
-            assertEquals(20, expectItem.total)
+            require(expectItem is Resource.Success)
             assertEquals(2023, expectItem.data.first().season)
             assertEquals(20, expectItem.data.first().round)
             assertEquals("interlagos", expectItem.data.first().circuit.id)
@@ -65,27 +61,24 @@ class GetCurrentLastResultUseCaseTest {
         }
 
         verify(atLeast = 1) {
-            resultRepository.getCurrentLastResult(onStart = any(), onError = any(), onComplete = any())
+            resultRepository.getCurrentLastResult()
         }
     }
 
     @Test
     fun executeErrorTest() = runTest {
-        val mockFlow = flow<QueryResult<List<Race>>> { throw RuntimeException("broken!") }
+        val mockFlow = flow<Resource<List<Race>>> { throw RuntimeException("broken!") }
 
-        every { resultRepository.getCurrentLastResult(any(), any(), any()) }.returns(mockFlow)
+        every { resultRepository.getCurrentLastResult() }.returns(mockFlow)
 
-        useCase.execute(
+        useCase.invoke(
             params = Params,
-            onStart = {},
-            onError = {},
-            onComplete = {},
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             assertEquals("broken!", awaitError().message)
         }
 
         verify(atLeast = 1) {
-            resultRepository.getCurrentLastResult(onStart = any(), onError = any(), onComplete = any())
+            resultRepository.getCurrentLastResult()
         }
     }
 }
