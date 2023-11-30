@@ -3,6 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.core.datetime)
     implementation(projects.domain.models)
 }

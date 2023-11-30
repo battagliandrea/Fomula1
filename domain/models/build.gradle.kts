@@ -3,5 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(projects.core.datetime)
+    api(projects.core.datetime)
+    api(projects.core.resource)
 }
