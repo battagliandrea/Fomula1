@@ -21,8 +21,8 @@ interface IResultsRepository {
     fun getResults(
         year: Int,
         round: Int,
-        limit: Int = 0,
-        offset: Int = 50,
+        limit: Int = 50,
+        offset: Int = 0,
     ): Flow<Resource<List<Race>>>
 
     /**
