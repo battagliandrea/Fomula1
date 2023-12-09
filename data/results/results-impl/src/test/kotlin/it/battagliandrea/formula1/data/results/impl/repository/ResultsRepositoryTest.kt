@@ -6,6 +6,7 @@ import com.skydoves.sandwich.retrofit.responseOf
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import it.battagliandrea.formula1.core.resource.Resource
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
 import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
@@ -59,20 +60,16 @@ class ResultsRepositoryTest {
             round = 20,
             limit = 20,
             offset = 0,
-            onStart = {},
-            onComplete = {},
-            onError = {},
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
-            assertEquals(expectItem.limit, 30)
-            assertEquals(expectItem.offset, 0)
-            assertEquals(expectItem.total, 20)
+            require(expectItem is Resource.Success)
             assertEquals(expectItem.data.first().season, 2023)
             assertEquals(expectItem.data.first().round, 20)
             assertEquals(expectItem.data.first().circuit.id, "interlagos")
             assertTrue(expectItem.data.first().results.isNotEmpty())
             assertEquals(expectItem.data.first().results.first().driver.id, "max_verstappen")
             assertEquals(expectItem.data.first().results.first().constructor.id, "red_bull")
+
             awaitComplete()
         }
 
@@ -93,21 +90,17 @@ class ResultsRepositoryTest {
             }
             )
 
-        repository.getCurrentLastResult(
-            onStart = {},
-            onComplete = {},
-            onError = {},
-        ).test(2.toDuration(DurationUnit.SECONDS)) {
+        repository.getCurrentLastResult().test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
-            assertEquals(expectItem.limit, 30)
-            assertEquals(expectItem.offset, 0)
-            assertEquals(expectItem.total, 20)
+
+            require(expectItem is Resource.Success)
             assertEquals(expectItem.data.first().season, 2023)
             assertEquals(expectItem.data.first().round, 20)
             assertEquals(expectItem.data.first().circuit.id, "interlagos")
             assertTrue(expectItem.data.first().results.isNotEmpty())
             assertEquals(expectItem.data.first().results.first().driver.id, "max_verstappen")
             assertEquals(expectItem.data.first().results.first().constructor.id, "red_bull")
+
             awaitComplete()
         }
 

@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    api(projects.core.datetime)
+    api(libs.kotlinx.coroutines.core.jvm)
 }

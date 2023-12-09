@@ -26,13 +26,14 @@ rootProject.name = "Formula1"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
-    /* ...projectPaths = */ ":app",
+    ":app",
     ":core:datetime",
     ":core:dispatcher:dispatcher-api",
     ":core:dispatcher:dispatcher-di",
     ":core:network:network-api",
     ":core:network:network-di",
     ":core:network:network-test",
+    ":core:resource",
     ":core:test:test-android",
     ":core:test:test-jvm",
     ":domain:models",
