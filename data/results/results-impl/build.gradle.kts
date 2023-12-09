@@ -11,7 +11,6 @@ dependencies {
     implementation(projects.core.dispatcher.dispatcherApi)
     implementation(projects.core.network.networkApi)
     implementation(projects.data.results.resultsApi)
-    implementation(projects.domain.models)
 
     implementation(libs.javax.inject)
     implementation(libs.kotlinx.coroutines.android)

@@ -4,5 +4,4 @@ plugins {
 
 dependencies {
     api(projects.core.datetime)
-    api(projects.core.resource)
 }

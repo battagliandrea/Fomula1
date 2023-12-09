@@ -10,7 +10,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.domain.models)
     implementation(projects.domain.usecase)
 
     implementation(libs.androidx.compose.material3)
