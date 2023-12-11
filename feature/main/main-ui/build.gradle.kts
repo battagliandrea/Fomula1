@@ -9,18 +9,12 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.ui.compose)
     implementation(projects.domain.usecase)
     implementation(projects.feature.results.resultsUi)
     implementation(projects.feature.schedule.scheduleUi)
     implementation(projects.feature.standings.standingsUi)
 
-    implementation(libs.androidx.lifecycle.runtime)
-    implementation(libs.androidx.lifecycle.viewmodel)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling)
-    implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.appyx.backstack.android)
     implementation(libs.appyx.navigation)
     implementation(libs.appyx.spotlight.android)
