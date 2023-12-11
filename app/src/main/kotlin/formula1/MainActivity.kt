@@ -11,7 +11,7 @@ import com.bumble.appyx.navigation.integration.NodeActivity
 import com.bumble.appyx.navigation.integration.NodeHost
 import com.bumble.appyx.navigation.platform.AndroidLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import formula1.ui.theme.Formula1Theme
+import it.battagliandrea.formula1.core.ui.compose.Formula1Theme
 import it.battagliandrea.formula1.feature.main.navigation.MainNode
 
 @AndroidEntryPoint

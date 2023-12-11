@@ -1,4 +1,4 @@
-package formula1.ui.theme
+package it.battagliandrea.formula1.core.ui.compose
 
 import androidx.compose.ui.graphics.Color
 
