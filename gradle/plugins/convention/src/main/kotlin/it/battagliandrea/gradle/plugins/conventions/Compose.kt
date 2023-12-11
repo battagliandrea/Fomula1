@@ -29,6 +29,16 @@ internal fun Project.configureAndroidCompose(
         dependencies {
             val bom = libs.findLibrary("androidx.compose.bom").get()
             add("implementation", platform (bom))
+
+            add("implementation", libs.findLibrary("androidx.activity.compose").get())
+            add("implementation", libs.findLibrary("androidx.compose.material3").get())
+            add("implementation", libs.findLibrary("androidx.compose.ui").get())
+            add("implementation", libs.findLibrary("androidx.compose.ui.graphics").get())
+            add("implementation", libs.findLibrary("androidx.compose.ui.tooling").get())
+            add("implementation", libs.findLibrary("androidx.compose.ui.tooling.preview").get())
+            add("implementation", libs.findLibrary("androidx.hilt.compose.navigation").get())
+            add("implementation", libs.findLibrary("androidx.lifecycle.runtime.compose").get())
+            add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.compose").get())
         }
     }
 }
