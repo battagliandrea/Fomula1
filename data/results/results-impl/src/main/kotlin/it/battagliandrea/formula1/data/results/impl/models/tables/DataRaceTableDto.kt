@@ -1,5 +1,6 @@
 package it.battagliandrea.formula1.data.results.impl.models.tables
 
+import it.battagliandrea.formula1.core.network.api.models.DataDto
 import it.battagliandrea.formula1.data.results.impl.models.RaceDto
 import it.battagliandrea.formula1.data.results.impl.models.mapToDomain
 import it.battagliandrea.formula1.domain.models.QueryResult

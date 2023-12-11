@@ -1,11 +1,10 @@
 package it.battagliandrea.formula1.data.results.impl.repository
 
-import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.retrofit.statusCode
 import com.skydoves.sandwich.suspendOnError
 import com.skydoves.sandwich.suspendOnException
 import com.skydoves.sandwich.suspendOnSuccess
 import it.battagliandrea.formula1.core.dispatcher.api.IoDispatcher
+import it.battagliandrea.formula1.core.network.api.extensions.toErrorType
 import it.battagliandrea.formula1.core.resource.ErrorType
 import it.battagliandrea.formula1.core.resource.Resource
 import it.battagliandrea.formula1.core.resource.toResourceError
@@ -56,11 +55,3 @@ class ResultsRepository @Inject constructor(
             .suspendOnException { emit(ErrorType.Unknown.toResourceError()) }
     }.flowOn(ioDispatcher)
 }
-
-fun ApiResponse.Failure.Error.toErrorType(): ErrorType =
-    when (this.statusCode.code) {
-        404 -> ErrorType.Api.NotFound
-        500 -> ErrorType.Api.Server
-        503 -> ErrorType.Api.ServiceUnavailable
-        else -> ErrorType.Unknown
-    }
