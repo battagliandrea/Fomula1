@@ -12,6 +12,7 @@ dependencies {
     implementation(projects.core.network.networkApi)
     implementation(projects.data.seasons.seasonsApi)
 
+    implementation(libs.javax.inject)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization)
 
