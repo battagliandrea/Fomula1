@@ -18,6 +18,8 @@ android {
 }
 
 dependencies {
+    api(projects.core.resource)
+
     api(libs.okhttp)
     api(libs.okhttp.logging)
     api(libs.retrofit)
