@@ -1,0 +1,18 @@
+{
+  "MRData": {
+    "xmlns": "http:\/\/ergast.com\/mrd\/1.5",
+    "series": "f1",
+    "url": "http://ergast.com/api/f1/seasons.json",
+    "limit": "100",
+    "offset": "0",
+    "total": "75",
+    "SeasonTable": {
+      "Seasons": [
+        {
+          "season": "2024",
+          "url": "https:\/\/en.wikipedia.org\/wiki\/2024_Formula_One_World_Championship"
+        }
+      ]
+    }
+  }
+}
