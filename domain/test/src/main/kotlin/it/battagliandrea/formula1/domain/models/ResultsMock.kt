@@ -4,7 +4,7 @@ import it.battagliandrea.formula1.core.datetime.models.RaceDuration
 import it.battagliandrea.formula1.core.datetime.toRaceTime
 import kotlinx.datetime.toLocalDate
 
-object MockUtils {
+object ResultsMock {
 
     fun mockQueryResult() = QueryResult(
         limit = 30,
