@@ -1,6 +1,7 @@
 plugins {
     id("f1.android.library")
     id("f1.android.library.compose")
+    id("f1.android.hilt")
     alias(libs.plugins.kotlin.percelize)
 }
 
