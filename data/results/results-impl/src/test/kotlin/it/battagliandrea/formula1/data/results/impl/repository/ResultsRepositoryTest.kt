@@ -6,12 +6,12 @@ import com.skydoves.sandwich.retrofit.responseOf
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import it.battagliandrea.formula1.core.network.api.models.BaseResponse
 import it.battagliandrea.formula1.core.resource.Resource
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
+import it.battagliandrea.formula1.data.results.impl.MockUtils
 import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
-import it.battagliandrea.formula1.data.results.impl.models.MockUtils
-import it.battagliandrea.formula1.data.results.impl.models.tables.BaseResponse
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

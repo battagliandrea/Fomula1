@@ -1,5 +1,15 @@
-package it.battagliandrea.formula1.data.results.impl.models
+package it.battagliandrea.formula1.data.results.impl
 
+import it.battagliandrea.formula1.data.results.impl.models.AverageSpeedDto
+import it.battagliandrea.formula1.data.results.impl.models.CircuitDto
+import it.battagliandrea.formula1.data.results.impl.models.ConstructorDto
+import it.battagliandrea.formula1.data.results.impl.models.DriverDto
+import it.battagliandrea.formula1.data.results.impl.models.FastestLapDto
+import it.battagliandrea.formula1.data.results.impl.models.LapTimeDto
+import it.battagliandrea.formula1.data.results.impl.models.LocationDto
+import it.battagliandrea.formula1.data.results.impl.models.RaceDto
+import it.battagliandrea.formula1.data.results.impl.models.RaceTimeDto
+import it.battagliandrea.formula1.data.results.impl.models.ResultDto
 import it.battagliandrea.formula1.data.results.impl.models.tables.DataRaceTableDto
 import it.battagliandrea.formula1.data.results.impl.models.tables.RaceTableDto
 

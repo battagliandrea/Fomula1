@@ -12,6 +12,7 @@ dependencies {
     api(projects.domain.models)
 
     implementation(projects.data.results.resultsApi)
+    implementation(projects.data.seasons.seasonsApi)
 
     implementation(libs.javax.inject)
 

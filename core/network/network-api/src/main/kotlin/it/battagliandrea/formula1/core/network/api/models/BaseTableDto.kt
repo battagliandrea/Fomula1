@@ -1,4 +1,4 @@
-package it.battagliandrea.formula1.data.results.impl.models.tables
+package it.battagliandrea.formula1.core.network.api.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -9,8 +9,7 @@ data class BaseResponse<out T>(
     val mRData: T?,
 )
 
-@Serializable
-sealed class DataDto {
+abstract class DataDto {
     abstract val limit: Long?
     abstract val offset: Long?
     abstract val total: Long?

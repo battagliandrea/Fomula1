@@ -7,8 +7,8 @@ import it.battagliandrea.formula1.core.resource.Resource
 import it.battagliandrea.formula1.core.resource.toResourceSuccess
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
-import it.battagliandrea.formula1.domain.models.MockUtils.mockRaceList
 import it.battagliandrea.formula1.domain.models.Race
+import it.battagliandrea.formula1.domain.models.ResultsMock.mockRaceList
 import it.battagliandrea.formula1.domain.usecase.GetResultsUseCase.Params
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf

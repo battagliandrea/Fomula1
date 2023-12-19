@@ -1,5 +1,6 @@
 plugins {
     id("f1.android.library")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -18,6 +19,9 @@ android {
 }
 
 dependencies {
+    api(projects.core.resource)
+
+    api(libs.kotlinx.serialization)
     api(libs.okhttp)
     api(libs.okhttp.logging)
     api(libs.retrofit)

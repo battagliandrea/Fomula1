@@ -1,7 +1,7 @@
 package it.battagliandrea.formula1.data.results.impl.datasource
 
 import com.skydoves.sandwich.ApiResponse
-import it.battagliandrea.formula1.data.results.impl.models.tables.BaseResponse
+import it.battagliandrea.formula1.core.network.api.models.BaseResponse
 import it.battagliandrea.formula1.data.results.impl.models.tables.DataRaceTableDto
 import retrofit2.http.GET
 import retrofit2.http.Path
