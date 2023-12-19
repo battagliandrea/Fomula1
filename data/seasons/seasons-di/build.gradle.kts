@@ -12,5 +12,4 @@ dependencies {
     api(projects.data.seasons.seasonsImpl)
 
     implementation(projects.core.network.networkApi)
-    implementation(libs.kotlinx.serialization)
 }

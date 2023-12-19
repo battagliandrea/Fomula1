@@ -14,7 +14,6 @@ dependencies {
 
     implementation(libs.javax.inject)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.serialization)
 
     testImplementation(projects.core.test.testAndroid)
     testImplementation(projects.core.network.networkTest)
