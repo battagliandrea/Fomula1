@@ -26,7 +26,7 @@ class ErgastApiContractTestContract : ApiContractAbstract<ErgastApiContract>() {
     fun seasonsTest() = runTest {
         enqueueResponse("seasons.json")
 
-        val response = apiContract.seasons()
+        val response = apiContract.seasons(limit = 20, offset = 0)
         val responseBody = requireNotNull((response as ApiResponse.Success).data)
 
         assertThat(responseBody.mRData, instanceOf(DataSeasonsTableDto::class.java))

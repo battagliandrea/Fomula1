@@ -46,7 +46,7 @@ class SeasonsRepositoryTest {
             mRData = MockUtils.mockDataSeasonsTableDto(),
         )
 
-        coEvery { apiContract.seasons() } returns(
+        coEvery { apiContract.seasons(limit = any(), offset = any()) } returns(
             ApiResponse.responseOf {
                 Response.success(
                     mockData,
@@ -62,6 +62,6 @@ class SeasonsRepositoryTest {
             awaitComplete()
         }
 
-        coVerify(atLeast = 1) { apiContract.seasons() }
+        coVerify(atLeast = 1) { apiContract.seasons(limit = any(), offset = any()) }
     }
 }

@@ -25,7 +25,7 @@ class SeasonsRepository @Inject constructor(
 ) : ISeasonsRepository {
 
     override fun getSeasons() = flow<Resource<List<Season>>> {
-        apiContract.seasons()
+        apiContract.seasons(limit = DEFAULT_LIMIT, offset = DEFAULT_OFFSET)
             .suspendOnSuccess {
                 val query = data.mRData.mapToDomain()
                 emit(query.data.toResourceSuccess())
@@ -36,5 +36,10 @@ class SeasonsRepository @Inject constructor(
             .suspendOnException {
                 emit(ErrorType.Unknown.toResourceError())
             }
+    }
+
+    companion object {
+        private const val DEFAULT_LIMIT = 100
+        private const val DEFAULT_OFFSET = 0
     }
 }
