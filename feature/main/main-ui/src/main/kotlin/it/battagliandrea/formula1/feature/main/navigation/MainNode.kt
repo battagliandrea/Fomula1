@@ -21,7 +21,7 @@ import com.bumble.appyx.navigation.node.node
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Results
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Schedule
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Standings
-import it.battagliandrea.formula1.feature.results.ui.ResultsScreen
+import it.battagliandrea.formula1.feature.results.ui.ResultsNode
 import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleScreen
 import it.battagliandrea.formula1.feature.standings.ui.StandindsScreen
 
@@ -41,7 +41,7 @@ class MainNode(
     override fun resolve(interactionTarget: MainNavTarget, buildContext: BuildContext): Node =
         when (interactionTarget) {
             Schedule -> node(buildContext) { ScheduleScreen() }
-            Results -> node(buildContext) { ResultsScreen() }
+            Results -> node(buildContext) { ResultsNode() }
             Standings -> node(buildContext) { StandindsScreen() }
         }
 
@@ -79,7 +79,7 @@ class MainNode(
 
 @Preview(showBackground = true)
 @Composable
-fun HomeNodePreview() {
+fun MainNodePreview() {
     MainNode(
         buildContext = BuildContext.root(null),
     ).Compose()

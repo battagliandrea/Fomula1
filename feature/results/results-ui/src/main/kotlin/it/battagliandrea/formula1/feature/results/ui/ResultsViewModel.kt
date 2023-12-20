@@ -15,7 +15,7 @@ class ResultsViewModel @Inject constructor(
     private val getResultsUseCase: GetResultsUseCase,
 ) : ViewModel() {
 
-    val state = getResultsUseCase(params = Params(round = 1, year = 2023))
+    val resultsUiState = getResultsUseCase(params = Params(round = 1, year = 2023))
         .fold(
             isSuccess = { ResultsUiState.Success(races = it) },
             isError = { ResultsUiState.Error },

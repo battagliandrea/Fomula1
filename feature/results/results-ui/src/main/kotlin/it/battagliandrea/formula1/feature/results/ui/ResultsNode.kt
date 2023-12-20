@@ -12,19 +12,32 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import it.battagliandrea.formula1.domain.models.Result
 
 @Composable
-fun ResultsScreen(
+fun ResultsNode(
+    modifier: Modifier = Modifier,
     viewModel: ResultsViewModel = hiltViewModel(),
 ) {
-    val state by viewModel.state.collectAsStateWithLifecycle()
+    val resultsUiState by viewModel.resultsUiState.collectAsStateWithLifecycle()
 
+    ResultScreen(
+        modifier = modifier,
+        resultsUiState = resultsUiState,
+    )
+}
+
+@Composable
+fun ResultScreen(
+    modifier: Modifier = Modifier,
+    resultsUiState: ResultsUiState = ResultsUiState.Loading,
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize(),
     ) {
         Surface(
@@ -33,20 +46,19 @@ fun ResultsScreen(
                 .fillMaxSize(),
             color = MaterialTheme.colorScheme.background,
         ) {
-            when (val s = state) {
+            when (resultsUiState) {
+                ResultsUiState.Loading -> Unit
                 is ResultsUiState.Success -> {
-                    ResultList(results = s.races[0].results)
+                    ResultsList(results = resultsUiState.races[0].results)
                 }
-                else -> {
-                    Text(text = "This is the results screen!")
-                }
+                ResultsUiState.Error -> Unit
             }
         }
     }
 }
 
 @Composable
-private fun ResultList(
+private fun ResultsList(
     modifier: Modifier = Modifier,
     results: List<Result>,
 ) {
@@ -58,4 +70,14 @@ private fun ResultList(
             Text(text = "${result.position} ${result.driver.code} ${result.time?.time.orEmpty()}")
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ResultScreenPreview() {
+    ResultScreen(
+        resultsUiState = ResultsUiState.Success(
+            races = emptyList(),
+        ),
+    )
 }
