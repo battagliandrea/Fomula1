@@ -15,7 +15,7 @@ class ScheduleViewModel @Inject constructor(
     private val getSeasonsUseCase: GetSeasonsUseCase,
 ) : ViewModel() {
 
-    val state = getSeasonsUseCase(Params)
+    val state = getSeasonsUseCase(params = Params)
         .fold(
             isSuccess = { ScheduleUiState.Success(seasons = it) },
             isError = { ScheduleUiState.Error },
