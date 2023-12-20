@@ -15,14 +15,14 @@ class ScheduleViewModel @Inject constructor(
     private val getSeasonsUseCase: GetSeasonsUseCase,
 ) : ViewModel() {
 
-    val state = getSeasonsUseCase(params = Params)
+    val seasonsUiState = getSeasonsUseCase(params = Params)
         .fold(
-            isSuccess = { ScheduleUiState.Success(seasons = it) },
-            isError = { ScheduleUiState.Error },
+            isSuccess = { SeasonsUiState.Success(seasons = it) },
+            isError = { SeasonsUiState.Loading },
         )
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000L),
-            initialValue = ScheduleUiState.Loading,
+            initialValue = SeasonsUiState.Loading,
         )
 }

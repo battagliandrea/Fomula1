@@ -22,7 +22,7 @@ import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Results
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Schedule
 import it.battagliandrea.formula1.feature.main.navigation.MainNavTarget.Standings
 import it.battagliandrea.formula1.feature.results.ui.ResultsNode
-import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleScreen
+import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleNode
 import it.battagliandrea.formula1.feature.standings.ui.StandindsScreen
 
 class MainNode(
@@ -40,7 +40,7 @@ class MainNode(
 ) {
     override fun resolve(interactionTarget: MainNavTarget, buildContext: BuildContext): Node =
         when (interactionTarget) {
-            Schedule -> node(buildContext) { ScheduleScreen() }
+            Schedule -> node(buildContext) { ScheduleNode() }
             Results -> node(buildContext) { ResultsNode() }
             Standings -> node(buildContext) { StandindsScreen() }
         }

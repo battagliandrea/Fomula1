@@ -12,20 +12,32 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import it.battagliandrea.formula1.domain.models.Season
 
 @Composable
-fun ScheduleScreen(
+fun ScheduleNode(
+    modifier: Modifier = Modifier,
     viewModel: ScheduleViewModel = hiltViewModel(),
 ) {
-    val state by viewModel.state.collectAsStateWithLifecycle()
+    val seasonsUiState by viewModel.seasonsUiState.collectAsStateWithLifecycle()
 
+    ScheduleScreen(
+        modifier = modifier.fillMaxSize(),
+        seasonsUiState = seasonsUiState,
+    )
+}
+
+@Composable
+fun ScheduleScreen(
+    modifier: Modifier = Modifier,
+    seasonsUiState: SeasonsUiState = SeasonsUiState.Loading,
+) {
     Column(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = modifier,
     ) {
         Surface(
             modifier = Modifier
@@ -33,12 +45,10 @@ fun ScheduleScreen(
                 .fillMaxSize(),
             color = MaterialTheme.colorScheme.background,
         ) {
-            when (val s = state) {
-                is ScheduleUiState.Success -> {
-                    SeasonsList(results = s.seasons)
-                }
-                else -> {
-                    Text(text = "This is the results screen!")
+            when (seasonsUiState) {
+                SeasonsUiState.Loading -> Unit
+                is SeasonsUiState.Success -> {
+                    SeasonsList(results = seasonsUiState.seasons)
                 }
             }
         }
@@ -58,4 +68,14 @@ private fun SeasonsList(
             Text(text = "${result.year}")
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ResultScreenPreview() {
+    ScheduleScreen(
+        seasonsUiState = SeasonsUiState.Success(
+            seasons = emptyList(),
+        ),
+    )
 }
