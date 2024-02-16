@@ -33,13 +33,5 @@ gradlePlugin {
             id = "f1.android.application"
             implementationClass = "AndroidApplicationPlugin"
         }
-        register("AndroidApplicationComposePlugin") {
-            id = "f1.android.application.compose"
-            implementationClass = "AndroidApplicationComposePlugin"
-        }
-        register("SpotlessPlugin") {
-            id = "f1.spotless"
-            implementationClass = "SpotlessPlugin"
-        }
     }
 }
