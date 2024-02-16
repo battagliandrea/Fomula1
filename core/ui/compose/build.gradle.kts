@@ -1,5 +1,4 @@
 plugins {
-    id("f1.android.library")
     id("f1.android.library.compose")
 }
 
