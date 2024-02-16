@@ -23,7 +23,7 @@ class SpotlessPlugin: Plugin<Project> {
             kotlin {
                 target("**/*.kt")
                 targetExclude("$buildDir/**/*.kt")
-                ktlint(ktlintVersion).userData(mapOf("android" to "true"))
+                ktlint(ktlintVersion)
                     .editorConfigOverride(
                         mapOf(
                             "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
