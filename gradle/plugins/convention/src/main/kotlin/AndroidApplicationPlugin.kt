@@ -1,9 +1,8 @@
-import com.android.build.api.dsl.ApplicationExtension
-import it.battagliandrea.gradle.plugins.conventions.AndroidSdk
-import it.battagliandrea.gradle.plugins.conventions.configureKotlinAndroid
+import it.battagliandrea.gradle.plugins.conventions.configureAndroidApplication
+import it.battagliandrea.gradle.plugins.conventions.configureKotlinOptions
+import it.battagliandrea.gradle.plugins.conventions.configureSpotless
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
 
 /**
  * Gradle plugin class for configuring an Android application project.
@@ -15,21 +14,13 @@ import org.gradle.kotlin.dsl.configure
  */
 class AndroidApplicationPlugin: Plugin<Project> {
     override fun apply(target: Project) = with(target) {
-        with(pluginManager) {
-            apply("com.android.application")
-            apply("org.jetbrains.kotlin.android")
-            apply("f1.spotless")
+        apply {
+            plugin("com.android.application")
+            plugin("kotlin-android")
         }
 
-        extensions.configure(ApplicationExtension::class){
-            configureKotlinAndroid(this)
-            defaultConfig.targetSdk = AndroidSdk.targetSdk
-
-            packaging {
-                resources {
-                    excludes += "/META-INF/{AL2.0,LGPL2.1}"
-                }
-            }
-        }
+        configureAndroidApplication()
+        configureKotlinOptions()
+        configureSpotless()
     }
 }
