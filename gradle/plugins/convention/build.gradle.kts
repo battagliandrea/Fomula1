@@ -25,9 +25,9 @@ gradlePlugin {
             id = "f1.android.library"
             implementationClass = "AndroidLibraryPlugin"
         }
-        register("AndroidLibraryComposePlugin") {
+        register("AndroidLibraryUiPlugin") {
             id = "f1.android.library.compose"
-            implementationClass = "AndroidLibraryComposePlugin"
+            implementationClass = "AndroidLibraryUiPlugin"
         }
         register("AndroidApplicationPlugin") {
             id = "f1.android.application"
