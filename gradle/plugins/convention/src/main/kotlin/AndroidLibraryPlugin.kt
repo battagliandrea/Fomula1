@@ -1,8 +1,8 @@
-import com.android.build.gradle.LibraryExtension
-import it.battagliandrea.gradle.plugins.conventions.configureKotlinAndroid
+import it.battagliandrea.gradle.plugins.conventions.configureAndroidLibrary
+import it.battagliandrea.gradle.plugins.conventions.configureKotlinOptions
+import it.battagliandrea.gradle.plugins.conventions.configureSpotless
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
 
 /**
  * Gradle plugin class for configuring an Android library project.
@@ -14,14 +14,13 @@ import org.gradle.kotlin.dsl.configure
  */
 class AndroidLibraryPlugin: Plugin<Project> {
     override fun apply(target: Project) = with(target) {
-        with(pluginManager) {
-            apply("com.android.library")
-            apply("org.jetbrains.kotlin.android")
-            apply("f1.spotless")
+        apply {
+            plugin("com.android.library")
+            plugin("kotlin-android")
         }
 
-        extensions.configure<LibraryExtension> {
-            configureKotlinAndroid(this)
-        }
+        configureAndroidLibrary()
+        configureKotlinOptions()
+        configureSpotless()
     }
 }
