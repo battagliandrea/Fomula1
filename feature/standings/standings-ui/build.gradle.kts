@@ -1,5 +1,4 @@
 plugins {
-    id("f1.android.library")
     id("f1.android.library.compose")
     alias(libs.plugins.kotlin.percelize)
 }
@@ -10,5 +9,6 @@ android {
 
 dependencies {
     implementation(projects.core.ui.compose)
+    implementation(projects.core.ui.navigation)
     implementation(projects.domain.usecase)
 }

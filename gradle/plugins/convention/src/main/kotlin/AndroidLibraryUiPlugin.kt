@@ -1,8 +1,8 @@
-import com.android.build.api.dsl.LibraryExtension
-import it.battagliandrea.gradle.plugins.conventions.configureAndroidCompose
+import it.battagliandrea.gradle.plugins.conventions.configureAndroidLibraryWithCompose
+import it.battagliandrea.gradle.plugins.conventions.configureKotlinOptions
+import it.battagliandrea.gradle.plugins.conventions.configureSpotless
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.getByType
 
 /**
  * Gradle plugin class for configuring an Android library project with Jetpack Compose.
@@ -13,9 +13,15 @@ import org.gradle.kotlin.dsl.getByType
  * After applying the plugin, it configures the project for Android library development
  * with Jetpack Compose.
  */
-class AndroidLibraryComposePlugin: Plugin<Project> {
+class AndroidLibraryUiPlugin: Plugin<Project> {
     override fun apply(target: Project) = with(target) {
-        val extension = extensions.getByType<LibraryExtension>()
-        configureAndroidCompose(extension)
+        apply {
+            plugin("com.android.library")
+            plugin("kotlin-android")
+        }
+
+        configureAndroidLibraryWithCompose()
+        configureKotlinOptions()
+        configureSpotless()
     }
 }

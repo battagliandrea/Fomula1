@@ -1,7 +1,6 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("f1.android.application")
-    id("f1.android.application.compose")
     id("f1.android.hilt")
 }
 

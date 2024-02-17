@@ -25,21 +25,13 @@ gradlePlugin {
             id = "f1.android.library"
             implementationClass = "AndroidLibraryPlugin"
         }
-        register("AndroidLibraryComposePlugin") {
+        register("AndroidLibraryUiPlugin") {
             id = "f1.android.library.compose"
-            implementationClass = "AndroidLibraryComposePlugin"
+            implementationClass = "AndroidLibraryUiPlugin"
         }
         register("AndroidApplicationPlugin") {
             id = "f1.android.application"
             implementationClass = "AndroidApplicationPlugin"
-        }
-        register("AndroidApplicationComposePlugin") {
-            id = "f1.android.application.compose"
-            implementationClass = "AndroidApplicationComposePlugin"
-        }
-        register("SpotlessPlugin") {
-            id = "f1.spotless"
-            implementationClass = "SpotlessPlugin"
         }
     }
 }

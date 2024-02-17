@@ -1,8 +1,6 @@
+import it.battagliandrea.gradle.plugins.conventions.configureHilt
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 
 /**
  * Gradle plugin class for configuring Hilt dependency injection in an Android project.
@@ -14,15 +12,11 @@ import org.gradle.kotlin.dsl.getByType
  */
 class AndroidHiltPlugin: Plugin<Project> {
     override fun apply(target: Project) = with(target) {
-        with(pluginManager) {
-            apply("dagger.hilt.android.plugin")
-            apply("org.jetbrains.kotlin.kapt")
+        apply {
+            plugin("dagger.hilt.android.plugin")
+            plugin("kotlin-kapt")
         }
 
-        val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
-        dependencies {
-            "implementation"(libs.findLibrary("dagger.hilt.android").get())
-            "kapt"(libs.findLibrary("dagger.hilt.compiler").get())
-        }
+        configureHilt()
     }
 }

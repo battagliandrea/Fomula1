@@ -1,4 +1,5 @@
-import it.battagliandrea.gradle.plugins.conventions.configureKotlinJvm
+import it.battagliandrea.gradle.plugins.conventions.configureJavaPlugin
+import it.battagliandrea.gradle.plugins.conventions.configureKotlinOptions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -11,12 +12,12 @@ import org.gradle.api.Project
  * After applying the plugin, it configures the project for Kotlin development in a JVM-based environment.
  */
 class KotlinJvmPlugin: Plugin<Project> {
-    override fun apply(target: Project) = with(target) {
-        with(pluginManager) {
-            apply("org.jetbrains.kotlin.jvm")
-            apply("f1.spotless")
+    override fun apply(project: Project) = with(project) {
+        apply {
+            plugin("org.jetbrains.kotlin.jvm")
         }
 
-        configureKotlinJvm()
+        configureJavaPlugin()
+        configureKotlinOptions()
     }
 }
