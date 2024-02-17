@@ -7,5 +7,7 @@ android {
 }
 
 dependencies {
+    api(projects.core.ui.activity)
+
     api(libs.bundles.compose.navigation)
 }
