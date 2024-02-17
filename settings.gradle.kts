@@ -36,6 +36,7 @@ include(
     ":core:resource",
     ":core:test:test-android",
     ":core:test:test-jvm",
+    ":core:ui:activity",
     ":core:ui:compose",
     ":core:ui:navigation",
     ":domain:models",
