@@ -33,14 +33,13 @@ dependencies {
     implementation(projects.core.dispatcher.dispatcherDi)
     implementation(projects.core.network.networkDi)
     implementation(projects.core.ui.compose)
+    implementation(projects.core.ui.navigation)
     implementation(projects.data.results.resultsDi)
     implementation(projects.data.seasons.seasonsDi)
     implementation(projects.domain.models)
     implementation(projects.feature.main.mainUi)
 
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.appyx.backstack.android)
-    implementation(libs.appyx.navigation)
-    implementation(libs.appyx.spotlight.android)
 }
