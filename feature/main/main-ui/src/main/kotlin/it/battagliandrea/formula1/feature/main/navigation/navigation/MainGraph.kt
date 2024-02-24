@@ -1,5 +1,6 @@
 package it.battagliandrea.formula1.feature.main.navigation.navigation
 
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -31,9 +32,13 @@ fun NavGraphBuilder.mainGraph(
 }
 
 fun NavGraphBuilder.mainScreen(
-    onNavigateBack: () -> Unit,
+    startDestination: String,
+    bottomBarBuilder: NavGraphBuilder.() -> Unit,
 ) {
     composable(route = MAIN_ROUTE) {
-        MainScreen()
+        MainScreen(
+            startDestination = startDestination,
+            bottomBarBuilder = bottomBarBuilder,
+        )
     }
 }
