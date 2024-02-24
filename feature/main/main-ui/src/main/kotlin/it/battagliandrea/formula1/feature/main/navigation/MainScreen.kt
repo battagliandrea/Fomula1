@@ -25,9 +25,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import it.battagliandrea.formula1.feature.main.navigation.NavigationItem.Results
-import it.battagliandrea.formula1.feature.main.navigation.NavigationItem.Schedule
-import it.battagliandrea.formula1.feature.main.navigation.NavigationItem.Standings
+import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Results
+import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Schedule
+import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Standings
 
 @Composable
 internal fun MainScreen(
