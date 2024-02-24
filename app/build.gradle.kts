@@ -38,6 +38,9 @@ dependencies {
     implementation(projects.data.seasons.seasonsDi)
     implementation(projects.domain.models)
     implementation(projects.feature.main.mainUi)
+    implementation(projects.feature.results.resultsUi)
+    implementation(projects.feature.schedule.scheduleUi)
+    implementation(projects.feature.standings.standingsUi)
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core)
