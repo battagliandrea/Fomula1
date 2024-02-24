@@ -1,11 +1,22 @@
 package it.battagliandrea.formula1.feature.main.navigation.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
-import androidx.compose.ui.graphics.vector.ImageVector
+import it.battagliandrea.formula1.feature.main.R
 
-internal sealed class NavigationItem(val route: String, val icon: ImageVector, val label: String) {
-    data object Results : NavigationItem("results", Icons.Default.List, "Results")
-    data object Schedule : NavigationItem("schedule", Icons.Default.List, "Schedule")
-    data object Standings : NavigationItem("standings", Icons.Default.List, "Standings")
+internal sealed class NavigationItem(val route: String, val iconRes: Int, val label: String) {
+
+    data object Results : NavigationItem(
+        route = "results",
+        iconRes = R.drawable.ic_results,
+        label = "Results",
+    )
+    data object Schedule : NavigationItem(
+        route = "schedule",
+        iconRes = R.drawable.ic_schedule,
+        label = "Schedule",
+    )
+    data object Standings : NavigationItem(
+        route = "standings",
+        iconRes = R.drawable.ic_standings,
+        label = "Standings",
+    )
 }
