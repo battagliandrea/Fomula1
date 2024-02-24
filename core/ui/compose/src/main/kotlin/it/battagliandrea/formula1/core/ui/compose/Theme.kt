@@ -97,6 +97,6 @@ fun Formula1Theme(
         colorScheme = colorScheme,
         typography = Typography,
         content = content,
-        shapes = shape,
+        shapes = shapes,
     )
 }
