@@ -13,16 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import it.battagliandrea.formula1.domain.models.Result
 
 @Composable
 fun ResultsScreen(
-    viewModel: ResultsViewModel = hiltViewModel(),
+    uiState: ResultsUiState,
 ) {
-    val state by viewModel.state.collectAsStateWithLifecycle()
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -33,7 +29,7 @@ fun ResultsScreen(
                 .fillMaxSize(),
             color = MaterialTheme.colorScheme.background,
         ) {
-            when (val s = state) {
+            when (val s = uiState) {
                 is ResultsUiState.Success -> {
                     ResultList(results = s.races[0].results)
                 }
