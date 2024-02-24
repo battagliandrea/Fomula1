@@ -13,16 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import it.battagliandrea.formula1.domain.models.Season
 
 @Composable
 fun ScheduleScreen(
-    viewModel: ScheduleViewModel = hiltViewModel(),
+    uiState: ScheduleUiState,
 ) {
-    val state by viewModel.state.collectAsStateWithLifecycle()
-
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -33,7 +29,7 @@ fun ScheduleScreen(
                 .fillMaxSize(),
             color = MaterialTheme.colorScheme.background,
         ) {
-            when (val s = state) {
+            when (val s = uiState) {
                 is ScheduleUiState.Success -> {
                     SeasonsList(results = s.seasons)
                 }

@@ -1,5 +1,6 @@
 plugins {
     id("f1.android.library.compose")
+    id("f1.android.hilt")
     alias(libs.plugins.kotlin.percelize)
 }
 
@@ -9,12 +10,6 @@ android {
 
 dependencies {
     implementation(projects.core.ui.compose)
+    implementation(projects.core.ui.navigation)
     implementation(projects.domain.usecase)
-    implementation(projects.feature.results.resultsUi)
-    implementation(projects.feature.schedule.scheduleUi)
-    implementation(projects.feature.standings.standingsUi)
-
-    implementation(libs.appyx.backstack.android)
-    implementation(libs.appyx.navigation)
-    implementation(libs.appyx.spotlight.android)
 }
