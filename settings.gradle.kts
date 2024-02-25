@@ -39,6 +39,7 @@ include(
     ":core:ui:activity",
     ":core:ui:compose",
     ":core:ui:navigation",
+    ":core:ui:resources",
     ":domain:models",
     ":domain:test",
     ":domain:usecase",
