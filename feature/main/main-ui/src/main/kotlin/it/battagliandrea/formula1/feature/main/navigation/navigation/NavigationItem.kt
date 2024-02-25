@@ -1,6 +1,6 @@
 package it.battagliandrea.formula1.feature.main.navigation.navigation
 
-import it.battagliandrea.formula1.feature.main.R
+import it.battagliandrea.formula1.core.ui.resources.R
 
 internal sealed class NavigationItem(val route: String, val iconRes: Int, val label: String) {
 

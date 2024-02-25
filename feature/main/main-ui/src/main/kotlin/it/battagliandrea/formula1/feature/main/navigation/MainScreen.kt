@@ -34,7 +34,7 @@ import androidx.navigation.compose.rememberNavController
 import it.battagliandrea.formula1.core.ui.compose.Formula1Theme
 import it.battagliandrea.formula1.core.ui.compose.Formula1Theme.dimens
 import it.battagliandrea.formula1.core.ui.compose.topRoundedCornerShapes
-import it.battagliandrea.formula1.feature.main.R
+import it.battagliandrea.formula1.core.ui.resources.R
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Results
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Schedule
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Standings

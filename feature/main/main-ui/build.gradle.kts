@@ -11,5 +11,6 @@ android {
 dependencies {
     implementation(projects.core.ui.compose)
     implementation(projects.core.ui.navigation)
+    implementation(projects.core.ui.resources)
     implementation(projects.domain.usecase)
 }
