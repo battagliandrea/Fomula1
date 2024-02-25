@@ -25,7 +25,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -33,6 +32,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import it.battagliandrea.formula1.core.ui.compose.Formula1Theme
+import it.battagliandrea.formula1.core.ui.compose.Formula1Theme.dimens
 import it.battagliandrea.formula1.core.ui.compose.topRoundedCornerShapes
 import it.battagliandrea.formula1.feature.main.R
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Results
@@ -77,9 +77,9 @@ private fun MainTopBar(
 ) {
     Column(
         modifier = modifier
-            .height(52.dp)
+            .height(dimens.minimum_toolbar_height)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = dimens.grid_2, vertical = dimens.grid_1),
         verticalArrangement = Arrangement.Center,
     ) {
         Image(
@@ -150,7 +150,7 @@ private fun MainContent(
     Column(
         modifier = modifier
             .padding(innerPadding),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(dimens.grid_2),
     ) {
         NavHost(
             navController = navController,
