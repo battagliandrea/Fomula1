@@ -2,6 +2,7 @@ package it.battagliandrea.formula1.domain.models
 
 import it.battagliandrea.formula1.core.datetime.models.RaceDuration
 import it.battagliandrea.formula1.core.datetime.toRaceTime
+import it.battagliandrea.formula1.domain.models.Schedule.Type.RACE
 import kotlinx.datetime.toLocalDate
 
 object ResultsMock {
@@ -20,8 +21,13 @@ object ResultsMock {
         round = 20,
         name = "São Paulo Grand Prix",
         circuit = mockCircuit(),
-        date = "2023-11-05".toLocalDate(),
-        time = "17:00:00Z".toRaceTime(),
+        schedules = listOf(
+            Schedule(
+                type = RACE,
+                date = "2023-11-05".toLocalDate(),
+                time = "17:00:00Z".toRaceTime(),
+            )
+        ),
         results = mockResultList(),
         url = "https://en.wikipedia.org/wiki/2023_S%C3%A3o_Paulo_Grand_Prix",
     )
