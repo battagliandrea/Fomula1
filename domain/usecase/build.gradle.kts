@@ -8,7 +8,7 @@ android {
 }
 
 dependencies {
-    api(projects.core.resource)
+    api(libs.arrow.core)
     api(projects.domain.models)
 
     implementation(projects.data.results.resultsApi)

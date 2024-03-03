@@ -1,7 +1,7 @@
 package it.battagliandrea.formula1.core.network.test
 
+import arrow.retrofit.adapter.either.EitherCallAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -55,16 +55,11 @@ abstract class ApiContractAbstract<T> {
         )
     }
 
-    @OptIn(ExperimentalSerializationApi::class)
     fun createService(clazz: Class<T>): T {
         return Retrofit.Builder()
             .baseUrl(mockWebServer.url("/"))
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-            .addCallAdapterFactory(
-                ApiResponseCallAdapterFactory.create(
-                    coroutineScope = coroutinesRule.testScope,
-                ),
-            )
+            .addCallAdapterFactory(EitherCallAdapterFactory.create())
             .build()
             .create(clazz)
     }

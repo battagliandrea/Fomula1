@@ -1,20 +1,16 @@
 package it.battagliandrea.formula1.data.seasons.impl.repository
 
-import com.skydoves.sandwich.suspendOnError
-import com.skydoves.sandwich.suspendOnException
-import com.skydoves.sandwich.suspendOnSuccess
+import arrow.core.left
+import arrow.core.right
 import it.battagliandrea.formula1.core.dispatcher.api.IoDispatcher
-import it.battagliandrea.formula1.core.network.api.extensions.toErrorType
-import it.battagliandrea.formula1.core.resource.ErrorType
-import it.battagliandrea.formula1.core.resource.Resource
-import it.battagliandrea.formula1.core.resource.toResourceError
-import it.battagliandrea.formula1.core.resource.toResourceSuccess
+import it.battagliandrea.formula1.data.core.toErrorType
 import it.battagliandrea.formula1.data.seasons.api.ISeasonsRepository
 import it.battagliandrea.formula1.data.seasons.impl.datasource.ErgastApiContract
 import it.battagliandrea.formula1.data.seasons.impl.models.tables.mapToDomain
-import it.battagliandrea.formula1.domain.models.Season
+import it.battagliandrea.formula1.domain.models.ErrorType.Unknown
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,19 +20,20 @@ class SeasonsRepository @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : ISeasonsRepository {
 
-    override fun getSeasons() = flow<Resource<List<Season>>> {
-        apiContract.seasons(limit = DEFAULT_LIMIT, offset = DEFAULT_OFFSET)
-            .suspendOnSuccess {
-                val query = data.mRData.mapToDomain()
-                emit(query.data.toResourceSuccess())
-            }
-            .suspendOnError {
-                emit(this.toErrorType().toResourceError())
-            }
-            .suspendOnException {
-                emit(ErrorType.Unknown.toResourceError())
-            }
-    }
+    override fun getSeasons() = flow {
+        try {
+            apiContract.seasons(limit = DEFAULT_LIMIT, offset = DEFAULT_OFFSET)
+                .map { response ->
+                    val query = response.mRData.mapToDomain()
+                    emit(query.data.right())
+                }
+                .mapLeft { error ->
+                    emit(error.toErrorType().left())
+                }
+        } catch (e: Exception) {
+            Unknown.left()
+        }
+    }.flowOn(ioDispatcher)
 
     companion object {
         private const val DEFAULT_LIMIT = 100

@@ -1,6 +1,7 @@
 package it.battagliandrea.formula1.data.seasons.impl.datasource
 
-import com.skydoves.sandwich.ApiResponse
+import arrow.core.Either
+import arrow.retrofit.adapter.either.networkhandling.CallError
 import it.battagliandrea.formula1.core.network.api.models.BaseResponse
 import it.battagliandrea.formula1.data.seasons.impl.models.tables.DataSeasonsTableDto
 import retrofit2.http.GET
@@ -12,5 +13,5 @@ interface ErgastApiContract {
     suspend fun seasons(
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
-    ): ApiResponse<BaseResponse<DataSeasonsTableDto>>
+    ): Either<CallError, BaseResponse<DataSeasonsTableDto>>
 }

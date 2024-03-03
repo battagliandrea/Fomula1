@@ -1,26 +1,22 @@
 package it.battagliandrea.formula1.data.results.impl.repository
 
 import app.cash.turbine.test
-import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.retrofit.responseOf
+import arrow.core.right
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import it.battagliandrea.formula1.core.network.api.models.BaseResponse
-import it.battagliandrea.formula1.core.resource.Resource
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
 import it.battagliandrea.formula1.data.results.impl.MockUtils
 import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import retrofit2.Response
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
@@ -47,13 +43,7 @@ class ResultsRepositoryTest {
             mRData = MockUtils.mockDataRaceTableDto(),
         )
 
-        coEvery { apiContract.results(year = 2023, round = 20, limit = 20, offset = 0) } returns(
-            ApiResponse.responseOf {
-                Response.success(
-                    mockData,
-                )
-            }
-            )
+        coEvery { apiContract.results(year = 2023, round = 20, limit = 20, offset = 0) } returns(mockData.right())
 
         repository.getResults(
             year = 2023,
@@ -62,13 +52,15 @@ class ResultsRepositoryTest {
             offset = 0,
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
-            require(expectItem is Resource.Success)
-            assertEquals(expectItem.data.first().season, 2023)
-            assertEquals(expectItem.data.first().round, 20)
-            assertEquals(expectItem.data.first().circuit.id, "interlagos")
-            assertTrue(expectItem.data.first().results.isNotEmpty())
-            assertEquals(expectItem.data.first().results.first().driver.id, "max_verstappen")
-            assertEquals(expectItem.data.first().results.first().constructor.id, "red_bull")
+            require(expectItem.isRight())
+
+            with(expectItem.getOrNull()?.first()) {
+                assertEquals(this?.season, 2023L)
+                assertEquals(this?.round, 20)
+                assertEquals(this?.circuit?.id, "interlagos")
+                assertEquals(this?.results?.first()?.driver?.id, "max_verstappen")
+                assertEquals(this?.results?.first()?.constructor?.id, "red_bull")
+            }
 
             awaitComplete()
         }
@@ -82,24 +74,20 @@ class ResultsRepositoryTest {
             mRData = MockUtils.mockDataRaceTableDto(),
         )
 
-        coEvery { apiContract.currentLastResults() } returns (
-            ApiResponse.responseOf {
-                Response.success(
-                    mockData,
-                )
-            }
-            )
+        coEvery { apiContract.currentLastResults() } returns (mockData.right())
 
         repository.getCurrentLastResult().test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
 
-            require(expectItem is Resource.Success)
-            assertEquals(expectItem.data.first().season, 2023)
-            assertEquals(expectItem.data.first().round, 20)
-            assertEquals(expectItem.data.first().circuit.id, "interlagos")
-            assertTrue(expectItem.data.first().results.isNotEmpty())
-            assertEquals(expectItem.data.first().results.first().driver.id, "max_verstappen")
-            assertEquals(expectItem.data.first().results.first().constructor.id, "red_bull")
+            require(expectItem.isRight())
+
+            with(expectItem.getOrNull()?.first()) {
+                assertEquals(this?.season, 2023L)
+                assertEquals(this?.round, 20)
+                assertEquals(this?.circuit?.id, "interlagos")
+                assertEquals(this?.results?.first()?.driver?.id, "max_verstappen")
+                assertEquals(this?.results?.first()?.constructor?.id, "red_bull")
+            }
 
             awaitComplete()
         }

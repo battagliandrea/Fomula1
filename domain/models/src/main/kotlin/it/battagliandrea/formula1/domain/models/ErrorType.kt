@@ -1,4 +1,4 @@
-package it.battagliandrea.formula1.core.resource
+package it.battagliandrea.formula1.domain.models
 
 /**
  * Sealed class representing different types of errors that can occur in the application.

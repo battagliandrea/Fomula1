@@ -1,13 +1,11 @@
 package it.battagliandrea.formula1.data.seasons.impl.repository
 
 import app.cash.turbine.test
-import com.skydoves.sandwich.ApiResponse
-import com.skydoves.sandwich.retrofit.responseOf
+import arrow.core.right
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import it.battagliandrea.formula1.core.network.api.models.BaseResponse
-import it.battagliandrea.formula1.core.resource.Resource
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.seasons.api.ISeasonsRepository
 import it.battagliandrea.formula1.data.seasons.impl.MockUtils
@@ -19,7 +17,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import retrofit2.Response
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
@@ -46,18 +43,15 @@ class SeasonsRepositoryTest {
             mRData = MockUtils.mockDataSeasonsTableDto(),
         )
 
-        coEvery { apiContract.seasons(limit = any(), offset = any()) } returns(
-            ApiResponse.responseOf {
-                Response.success(
-                    mockData,
-                )
-            }
-            )
+        coEvery { apiContract.seasons(limit = any(), offset = any()) } returns(mockData.right())
 
         repository.getSeasons().test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
-            require(expectItem is Resource.Success)
-            assertEquals(expectItem.data.first().year, 2024)
+            require(expectItem.isRight())
+
+            with(expectItem.getOrNull()) {
+                assertEquals(this?.first()?.year, 2024)
+            }
 
             awaitComplete()
         }
