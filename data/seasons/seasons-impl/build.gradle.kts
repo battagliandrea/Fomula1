@@ -10,6 +10,7 @@ android {
 dependencies {
     implementation(projects.core.dispatcher.dispatcherApi)
     implementation(projects.core.network.networkApi)
+    implementation(projects.data.core)
     implementation(projects.data.seasons.seasonsApi)
 
     implementation(libs.javax.inject)
