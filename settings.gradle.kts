@@ -33,7 +33,6 @@ include(
     ":core:network:network-api",
     ":core:network:network-di",
     ":core:network:network-test",
-    ":core:resource",
     ":core:test:test-android",
     ":core:test:test-jvm",
     ":core:ui:activity",
