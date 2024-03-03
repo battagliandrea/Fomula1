@@ -16,5 +16,5 @@ internal interface IFlowUseCase<in Params, out Result> {
      * @param params The input parameters for the use case.
      * @return A [Flow] emitting the result of type [Result].
      */
-    abstract fun execute(params: Params): Flow<Result>
+    fun execute(params: Params): Flow<Result>
 }
