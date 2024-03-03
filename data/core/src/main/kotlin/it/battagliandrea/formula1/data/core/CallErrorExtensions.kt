@@ -1,10 +1,10 @@
-package it.battagliandrea.formula1.core.network.api.extensions
+package it.battagliandrea.formula1.data.core
 
 import arrow.retrofit.adapter.either.networkhandling.CallError
 import arrow.retrofit.adapter.either.networkhandling.HttpError
 import arrow.retrofit.adapter.either.networkhandling.IOError
 import arrow.retrofit.adapter.either.networkhandling.UnexpectedCallError
-import it.battagliandrea.formula1.core.resource.ErrorType
+import it.battagliandrea.formula1.domain.models.ErrorType
 
 fun CallError.toErrorType(): ErrorType =
     when (this) {
