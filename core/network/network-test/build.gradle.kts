@@ -4,10 +4,10 @@ plugins {
 
 dependencies {
     implementation(projects.core.test.testJvm)
+    implementation(libs.arrow.core.retrofit)
     implementation(libs.kotlinx.serialization)
     implementation(libs.okhttp)
     implementation(libs.okhttp.mockwebserver)
     implementation(libs.retrofit)
     implementation(libs.retrofit.serialization)
-    implementation(libs.sandwich)
 }

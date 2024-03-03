@@ -63,7 +63,6 @@ okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor",
 okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp"}
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 retrofit-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-serialization"}
-sandwich = { group = "com.github.skydoves", name = "sandwich-retrofit", version.ref = "sandwich"}
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine"}
 
 # Dependencies of the included gradle/plugins

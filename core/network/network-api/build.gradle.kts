@@ -26,5 +26,4 @@ dependencies {
     api(libs.okhttp.logging)
     api(libs.retrofit)
     api(libs.retrofit.serialization)
-    api(libs.sandwich)
 }
