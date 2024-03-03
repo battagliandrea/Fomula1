@@ -1,13 +1,14 @@
 package it.battagliandrea.formula1.domain.usecase
 
 import app.cash.turbine.test
+import arrow.core.Either
+import arrow.core.right
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import it.battagliandrea.formula1.core.resource.Resource
-import it.battagliandrea.formula1.core.resource.toResourceSuccess
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.seasons.api.ISeasonsRepository
+import it.battagliandrea.formula1.domain.models.ErrorType
 import it.battagliandrea.formula1.domain.models.Season
 import it.battagliandrea.formula1.domain.models.SeasonsMock.mockSeasonsList
 import it.battagliandrea.formula1.domain.usecase.GetSeasonsUseCase.Params
@@ -41,16 +42,19 @@ class GetSeasonsUseCaseTest {
 
     @Test
     fun executeTest() = runTest {
-        val mockFlow = flowOf(mockSeasonsList().toResourceSuccess())
+        val mockFlow = flowOf(mockSeasonsList().right())
 
         every { seasonsRepository.getSeasons() }.returns(mockFlow)
 
-        useCase.invoke(
+        useCase.execute(
             params = Params,
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             val expectItem = awaitItem()
-            require(expectItem is Resource.Success)
-            assertEquals(2024, expectItem.data.first().year)
+            require(expectItem.isRight())
+            with(expectItem.getOrNull()) {
+                assertEquals(2024, this?.first()?.year)
+            }
+
             awaitComplete()
         }
 
@@ -61,11 +65,11 @@ class GetSeasonsUseCaseTest {
 
     @Test
     fun executeErrorTest() = runTest {
-        val mockFlow = flow<Resource<List<Season>>> { throw RuntimeException("broken!") }
+        val mockFlow = flow<Either<ErrorType, List<Season>>> { throw RuntimeException("broken!") }
 
         every { seasonsRepository.getSeasons() }.returns(mockFlow)
 
-        useCase.invoke(
+        useCase.execute(
             params = Params,
         ).test(2.toDuration(DurationUnit.SECONDS)) {
             assertEquals("broken!", awaitError().message)
