@@ -43,6 +43,7 @@ include(
     ":domain:models",
     ":domain:test",
     ":domain:usecase",
+    ":data:core",
     ":data:results:results-api",
     ":data:results:results-di",
     ":data:results:results-impl",
