@@ -1,14 +1,13 @@
 package it.battagliandrea.formula1.data.results.di
 
+import arrow.retrofit.adapter.either.EitherCallAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import it.battagliandrea.formula1.core.network.api.Client
 import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.Call
 import okhttp3.MediaType.Companion.toMediaType
@@ -19,7 +18,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
-    @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Singleton
     fun providesErgastApiContract(
@@ -31,7 +29,7 @@ class NetworkModule {
         .addConverterFactory(
             json.asConverterFactory("application/json".toMediaType()),
         )
-        .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
+        .addCallAdapterFactory(EitherCallAdapterFactory.create())
         .build()
         .create(ErgastApiContract::class.java)
 }

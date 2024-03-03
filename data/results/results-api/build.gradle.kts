@@ -3,6 +3,8 @@ plugins {
 }
 
 dependencies {
-    api(projects.core.resource)
     api(projects.domain.models)
+
+    api(libs.arrow.core)
+    api(libs.kotlinx.coroutines.core.jvm)
 }
