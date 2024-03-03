@@ -1,6 +1,5 @@
 package it.battagliandrea.formula1.data.results.impl.datasource
 
-import com.skydoves.sandwich.ApiResponse
 import it.battagliandrea.formula1.core.network.test.ApiContractAbstract
 import it.battagliandrea.formula1.data.results.impl.models.tables.DataRaceTableDto
 import kotlinx.coroutines.test.runTest
@@ -27,15 +26,14 @@ class ErgastApiContractTestContract : ApiContractAbstract<ErgastApiContract>() {
         enqueueResponse("results.json")
 
         val response = apiContract.currentLastResults()
-        val responseBody = requireNotNull((response as ApiResponse.Success).data)
+        require(response.isRight())
 
-        assertThat(responseBody.mRData, instanceOf(DataRaceTableDto::class.java))
-
-        with(responseBody.mRData as DataRaceTableDto) {
-            assertThat(total, `is`(20))
-            assertThat(offset, `is`(2))
-            assertThat(limit, `is`(10))
-            assert(raceTable!!.races!!.isNotEmpty())
+        with(requireNotNull(response.getOrNull())) {
+            assertThat(mRData, instanceOf(DataRaceTableDto::class.java))
+            assertThat(mRData?.total, `is`(20))
+            assertThat(mRData?.offset, `is`(2))
+            assertThat(mRData?.limit, `is`(10))
+            assert(mRData?.raceTable!!.races!!.isNotEmpty())
         }
     }
 
@@ -44,13 +42,10 @@ class ErgastApiContractTestContract : ApiContractAbstract<ErgastApiContract>() {
         enqueueResponse("current_last.json")
 
         val response = apiContract.currentLastResults()
-        val responseBody = requireNotNull((response as ApiResponse.Success).data)
-
-        assertThat(responseBody.mRData, instanceOf(DataRaceTableDto::class.java))
-
-        with(responseBody.mRData as DataRaceTableDto) {
-            assertThat(total, `is`(20))
-            assert(raceTable!!.races!!.isNotEmpty())
+        with(requireNotNull(response.getOrNull())) {
+            assertThat(mRData, instanceOf(DataRaceTableDto::class.java))
+            assertThat(mRData?.total, `is`(20))
+            assert(mRData?.raceTable!!.races!!.isNotEmpty())
         }
     }
 }
