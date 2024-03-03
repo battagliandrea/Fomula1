@@ -19,8 +19,6 @@ android {
 }
 
 dependencies {
-    api(projects.core.resource)
-
     api(libs.arrow.core)
     api(libs.arrow.core.retrofit)
     api(libs.kotlinx.serialization)
