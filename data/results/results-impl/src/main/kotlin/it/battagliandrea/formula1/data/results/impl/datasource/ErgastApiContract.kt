@@ -10,6 +10,9 @@ import retrofit2.http.Query
 
 interface ErgastApiContract {
 
+    @GET("current.json")
+    suspend fun currentSchedule(): Either<CallError, BaseResponse<DataRaceTableDto>>
+
     @GET("{year}/{round}/results.json")
     suspend fun results(
         @Path("year") year: Int,
