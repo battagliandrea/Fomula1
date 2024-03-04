@@ -10,6 +10,7 @@ import it.battagliandrea.formula1.data.results.impl.models.LocationDto
 import it.battagliandrea.formula1.data.results.impl.models.RaceDto
 import it.battagliandrea.formula1.data.results.impl.models.RaceTimeDto
 import it.battagliandrea.formula1.data.results.impl.models.ResultDto
+import it.battagliandrea.formula1.data.results.impl.models.ScheduleDto
 import it.battagliandrea.formula1.data.results.impl.models.tables.DataRaceTableDto
 import it.battagliandrea.formula1.data.results.impl.models.tables.RaceTableDto
 
@@ -38,8 +39,18 @@ internal object MockUtils {
         circuit = mockCircuit(),
         date = "2023-11-05",
         time = "17:00:00Z",
+        firstPractice = mockSchedule(),
+        secondPractice = mockSchedule(),
+        thirdPractice = mockSchedule(),
+        qualifying = mockSchedule(),
         results = mockResultList(),
     )
+
+    fun mockSchedule() =
+        ScheduleDto(
+            date = "2023-11-05",
+            time = "17:00:00Z",
+        )
 
     fun mockCircuit() =
         CircuitDto(
