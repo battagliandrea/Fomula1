@@ -6,7 +6,7 @@ import arrow.core.right
 import io.mockk.every
 import io.mockk.mockk
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
-import it.battagliandrea.formula1.data.results.api.repository.IResultsRepository
+import it.battagliandrea.formula1.data.races.api.repository.IResultsRepository
 import it.battagliandrea.formula1.domain.models.ErrorType
 import it.battagliandrea.formula1.domain.models.Race
 import it.battagliandrea.formula1.domain.models.ResultsMock.mockRaceList

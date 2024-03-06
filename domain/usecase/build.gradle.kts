@@ -11,7 +11,7 @@ dependencies {
     api(libs.arrow.core)
     api(projects.domain.models)
 
-    implementation(projects.data.results.resultsApi)
+    implementation(projects.data.races.racesApi)
     implementation(projects.data.seasons.seasonsApi)
 
     implementation(libs.javax.inject)
