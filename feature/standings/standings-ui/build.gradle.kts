@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(projects.core.ui.compose)
+    implementation(projects.core.ui.mvi)
     implementation(projects.core.ui.navigation)
     implementation(projects.domain.usecase)
 }

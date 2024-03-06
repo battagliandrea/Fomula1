@@ -79,8 +79,6 @@ compose = [
     "androidx-compose-ui-graphics",
     "androidx-compose-ui-tooling",
     "androidx-compose-ui-tooling-preview",
-    "androidx-lifecycle-runtime-compose",
-    "androidx-lifecycle-viewmodel-compose",
 ]
 compose-lifecycle = [
     "androidx-lifecycle-runtime-compose",

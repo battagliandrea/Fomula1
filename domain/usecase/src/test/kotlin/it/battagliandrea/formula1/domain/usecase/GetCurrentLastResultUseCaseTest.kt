@@ -52,11 +52,8 @@ class GetCurrentLastResultUseCaseTest {
             val expectItem = awaitItem()
             require(expectItem.isRight())
             with(expectItem.getOrNull()?.first()) {
-                assertEquals(2023L, this?.season)
-                assertEquals(20, this?.round)
-                assertEquals("interlagos", this?.circuit?.id)
-                assertEquals("max_verstappen", this?.results?.first()?.driver?.id)
-                assertEquals("red_bull", this?.results?.first()?.constructor?.id)
+                assertEquals("max_verstappen", this?.driver?.id)
+                assertEquals("red_bull", this?.constructor?.id)
             }
 
             awaitComplete()

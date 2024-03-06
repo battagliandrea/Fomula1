@@ -1,13 +1,9 @@
 package it.battagliandrea.formula1.feature.results.ui.navigation
 
-import androidx.compose.runtime.getValue
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import it.battagliandrea.formula1.feature.results.ui.ResultsScreen
-import it.battagliandrea.formula1.feature.results.ui.ResultsViewModel
 
 const val RESULTS_ROUTE = "results"
 
@@ -17,11 +13,6 @@ fun NavController.navigateToResults() {
 
 fun NavGraphBuilder.resultsScreen() {
     composable(route = RESULTS_ROUTE) {
-        val resultsViewModel: ResultsViewModel = hiltViewModel()
-        val resultsUiState by resultsViewModel.state.collectAsStateWithLifecycle()
-
-        ResultsScreen(
-            uiState = resultsUiState,
-        )
+        ResultsScreen()
     }
 }
