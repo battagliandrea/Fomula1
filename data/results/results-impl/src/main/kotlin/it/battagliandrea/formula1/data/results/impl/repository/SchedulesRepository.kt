@@ -1,12 +1,12 @@
-package it.battagliandrea.formula1.data.seasons.impl.repository
+package it.battagliandrea.formula1.data.results.impl.repository
 
 import arrow.core.left
 import arrow.core.right
 import it.battagliandrea.formula1.core.dispatcher.api.IoDispatcher
 import it.battagliandrea.formula1.data.core.toErrorType
-import it.battagliandrea.formula1.data.seasons.api.ISeasonsRepository
-import it.battagliandrea.formula1.data.seasons.impl.datasource.ErgastApiContract
-import it.battagliandrea.formula1.data.seasons.impl.models.tables.mapToDomain
+import it.battagliandrea.formula1.data.results.api.repository.ISchedulesRepository
+import it.battagliandrea.formula1.data.results.impl.datasource.ErgastApiContract
+import it.battagliandrea.formula1.data.results.impl.models.tables.mapToDomain
 import it.battagliandrea.formula1.domain.models.ErrorType.Unknown
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow
@@ -15,14 +15,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SeasonsRepository @Inject constructor(
+class SchedulesRepository @Inject constructor(
     private val apiContract: ErgastApiContract,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
-) : ISeasonsRepository {
+) : ISchedulesRepository {
 
-    override fun getSeasons() = flow {
+    override fun getCurrentSchedule() = flow {
         try {
-            apiContract.seasons(limit = DEFAULT_LIMIT, offset = DEFAULT_OFFSET)
+            apiContract.currentSchedule()
                 .map { response ->
                     val query = response.mRData.mapToDomain()
                     emit(query.data.right())
@@ -34,9 +34,4 @@ class SeasonsRepository @Inject constructor(
             emit(Unknown.left())
         }
     }.flowOn(ioDispatcher)
-
-    companion object {
-        private const val DEFAULT_LIMIT = 100
-        private const val DEFAULT_OFFSET = 0
-    }
 }

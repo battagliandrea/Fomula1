@@ -2,7 +2,11 @@ package it.battagliandrea.formula1.domain.models
 
 import it.battagliandrea.formula1.core.datetime.models.RaceDuration
 import it.battagliandrea.formula1.core.datetime.toRaceTime
-import it.battagliandrea.formula1.domain.models.Schedule.Type.RACE
+import it.battagliandrea.formula1.domain.models.SessionType.FIRST_PRACTICE
+import it.battagliandrea.formula1.domain.models.SessionType.QUALIFYING
+import it.battagliandrea.formula1.domain.models.SessionType.RACE
+import it.battagliandrea.formula1.domain.models.SessionType.SECOND_PRACTICE
+import it.battagliandrea.formula1.domain.models.SessionType.THIRD_PRACTICE
 import kotlinx.datetime.toLocalDate
 
 object ResultsMock {
@@ -21,12 +25,28 @@ object ResultsMock {
         round = 20,
         name = "São Paulo Grand Prix",
         circuit = mockCircuit(),
-        schedules = listOf(
-            Schedule(
-                type = RACE,
+        schedules = mapOf(
+            FIRST_PRACTICE to Schedule(
                 date = "2023-11-05".toLocalDate(),
                 time = "17:00:00Z".toRaceTime(),
-            )
+            ),
+            SECOND_PRACTICE to Schedule(
+                date = "2023-11-05".toLocalDate(),
+                time = "17:00:00Z".toRaceTime(),
+            ),
+            THIRD_PRACTICE to Schedule(
+                date = "2023-11-05".toLocalDate(),
+                time = "17:00:00Z".toRaceTime(),
+            ),
+            QUALIFYING to Schedule(
+                date = "2023-11-05".toLocalDate(),
+                time = "17:00:00Z".toRaceTime(),
+            ),
+            RACE to Schedule(
+                date = "2023-11-05".toLocalDate(),
+                time = "17:00:00Z".toRaceTime(),
+            ),
+
         ),
         results = mockResultList(),
         url = "https://en.wikipedia.org/wiki/2023_S%C3%A3o_Paulo_Grand_Prix",

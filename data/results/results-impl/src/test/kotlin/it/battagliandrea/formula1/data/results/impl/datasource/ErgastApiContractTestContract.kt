@@ -6,6 +6,8 @@ import kotlinx.coroutines.test.runTest
 import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,6 +21,29 @@ class ErgastApiContractTestContract : ApiContractAbstract<ErgastApiContract>() {
     @Before
     fun setup() {
         apiContract = createService(ErgastApiContract::class.java)
+    }
+
+    @Test
+    fun currentScheduleTest() = runTest {
+        enqueueResponse("schedules/current.json")
+
+        val response = apiContract.currentLastResults()
+        require(response.isRight())
+
+        with(requireNotNull(response.getOrNull())) {
+            assertThat(mRData, instanceOf(DataRaceTableDto::class.java))
+            assertThat(mRData?.total, `is`(24))
+            assertThat(mRData?.offset, `is`(0))
+            assertThat(mRData?.limit, `is`(30))
+            assert(mRData?.raceTable!!.races!!.isNotEmpty())
+            assertNull(mRData?.raceTable!!.races!!.first().results)
+            assertNotNull(mRData?.raceTable!!.races!!.first().firstPractice)
+            assertNotNull(mRData?.raceTable!!.races!!.first().secondPractice)
+            assertNotNull(mRData?.raceTable!!.races!!.first().thirdPractice)
+            assertNotNull(mRData?.raceTable!!.races!!.first().qualifying)
+            assertNotNull(mRData?.raceTable!!.races!!.first().date)
+            assertNotNull(mRData?.raceTable!!.races!!.first().time)
+        }
     }
 
     @Test

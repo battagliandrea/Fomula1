@@ -51,7 +51,7 @@ class ResultsRepository @Inject constructor(
                     emit(error.toErrorType().left())
                 }
         } catch (e: Exception) {
-            Unknown.left()
+            emit(Unknown.left())
         }
     }.flowOn(ioDispatcher)
 }
