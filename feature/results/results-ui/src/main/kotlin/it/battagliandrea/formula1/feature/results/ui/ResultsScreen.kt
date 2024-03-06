@@ -10,15 +10,41 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import it.battagliandrea.formula1.domain.models.Result
+import it.battagliandrea.formula1.feature.results.ui.ResultsContract.SideEffect
+import it.battagliandrea.formula1.feature.results.ui.ResultsContract.UiAction
+import it.battagliandrea.formula1.feature.results.ui.ResultsContract.UiState
+import it.battagliandrea.formula1.feature.results.ui.ResultsContract.UiState.Success
+import kotlinx.coroutines.flow.Flow
+
+@Composable
+fun ResultsScreen() {
+    val viewModel: ResultsViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    ResultsScreen(
+        uiState = uiState,
+        sideEffect = viewModel.sideEffect,
+        onAction = viewModel::onAction,
+    )
+}
 
 @Composable
 fun ResultsScreen(
-    uiState: ResultsUiState,
+    uiState: UiState,
+    sideEffect: Flow<SideEffect>,
+    onAction: (UiAction) -> Unit,
 ) {
+    LaunchedEffect(sideEffect) {
+        sideEffect.collect {
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -30,8 +56,8 @@ fun ResultsScreen(
             color = MaterialTheme.colorScheme.background,
         ) {
             when (val s = uiState) {
-                is ResultsUiState.Success -> {
-                    ResultList(results = s.races[0].results)
+                is Success -> {
+                    ResultList(results = s.lastResults)
                 }
                 else -> {
                     Text(text = "This is the results screen!")
