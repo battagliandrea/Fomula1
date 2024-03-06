@@ -37,6 +37,7 @@ include(
     ":core:test:test-jvm",
     ":core:ui:activity",
     ":core:ui:compose",
+    ":core:ui:mvi",
     ":core:ui:navigation",
     ":core:ui:resources",
     ":domain:models",
