@@ -7,7 +7,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import it.battagliandrea.formula1.core.test.MainDispatcherRule
-import it.battagliandrea.formula1.data.results.api.repository.ISchedulesRepository
+import it.battagliandrea.formula1.data.races.api.repository.ISchedulesRepository
 import it.battagliandrea.formula1.domain.models.ErrorType
 import it.battagliandrea.formula1.domain.models.Race
 import it.battagliandrea.formula1.domain.models.ResultsMock.mockRaceList

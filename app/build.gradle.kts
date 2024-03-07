@@ -34,7 +34,7 @@ dependencies {
     implementation(projects.core.network.networkDi)
     implementation(projects.core.ui.compose)
     implementation(projects.core.ui.navigation)
-    implementation(projects.data.results.resultsDi)
+    implementation(projects.data.races.racesDi)
     implementation(projects.data.seasons.seasonsDi)
     implementation(projects.domain.models)
     implementation(projects.feature.main.mainUi)

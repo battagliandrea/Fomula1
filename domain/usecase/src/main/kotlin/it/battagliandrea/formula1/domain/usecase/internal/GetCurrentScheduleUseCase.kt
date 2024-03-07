@@ -1,7 +1,7 @@
 package it.battagliandrea.formula1.domain.usecase.internal
 
 import arrow.core.Either
-import it.battagliandrea.formula1.data.results.api.repository.ISchedulesRepository
+import it.battagliandrea.formula1.data.races.api.repository.ISchedulesRepository
 import it.battagliandrea.formula1.domain.models.ErrorType
 import it.battagliandrea.formula1.domain.models.Race
 import it.battagliandrea.formula1.domain.usecase.internal.GetCurrentScheduleUseCase.Params
