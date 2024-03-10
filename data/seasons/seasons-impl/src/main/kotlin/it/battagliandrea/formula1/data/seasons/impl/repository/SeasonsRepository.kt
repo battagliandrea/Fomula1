@@ -31,7 +31,7 @@ class SeasonsRepository @Inject constructor(
                     emit(error.toErrorType().left())
                 }
         } catch (e: Exception) {
-            emit(Unknown.left())
+            emit(Unknown(e.message).left())
         }
     }.flowOn(ioDispatcher)
 

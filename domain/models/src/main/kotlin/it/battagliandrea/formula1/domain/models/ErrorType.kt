@@ -34,5 +34,5 @@ sealed class ErrorType {
     /**
      * Represents an unknown or generic error.
      */
-    data object Unknown : ErrorType()
+    data class Unknown(val cause: String? = null) : ErrorType()
 }

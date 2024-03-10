@@ -13,7 +13,7 @@ fun CallError.toErrorType(): ErrorType =
                 404 -> ErrorType.Api.NotFound
                 500 -> ErrorType.Api.Server
                 503 -> ErrorType.Api.ServiceUnavailable
-                else -> ErrorType.Unknown
+                else -> ErrorType.Unknown()
             }
         }
         is IOError -> {
@@ -21,6 +21,6 @@ fun CallError.toErrorType(): ErrorType =
         }
 
         is UnexpectedCallError -> {
-            ErrorType.Unknown
+            ErrorType.Unknown()
         }
     }
