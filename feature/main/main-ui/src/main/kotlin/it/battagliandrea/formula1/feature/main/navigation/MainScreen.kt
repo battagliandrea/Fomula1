@@ -35,7 +35,7 @@ import it.battagliandrea.formula1.core.ui.compose.Formula1Theme
 import it.battagliandrea.formula1.core.ui.compose.Formula1Theme.dimens
 import it.battagliandrea.formula1.core.ui.compose.topRoundedCornerShapes
 import it.battagliandrea.formula1.core.ui.resources.R
-import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Results
+import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Home
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Schedule
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Standings
 
@@ -99,7 +99,7 @@ private fun MainBottomBar(
     navigationBarCurrentItem: String,
     modifier: Modifier = Modifier,
 ) {
-    val acceptedItems = listOf(Results, Schedule, Standings)
+    val acceptedItems = listOf(Home, Schedule, Standings)
 
     Surface(
         shape = topRoundedCornerShapes.large,
@@ -165,7 +165,7 @@ private fun MainContent(
 fun MainScreenPreview() {
     Formula1Theme {
         MainScreen(
-            startDestination = "results",
+            startDestination = "home",
             modifier = Modifier.fillMaxSize(),
         ) {
             composable(route = "results") {

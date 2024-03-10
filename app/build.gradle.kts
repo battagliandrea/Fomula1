@@ -37,6 +37,7 @@ dependencies {
     implementation(projects.data.races.racesDi)
     implementation(projects.data.seasons.seasonsDi)
     implementation(projects.domain.models)
+    implementation(projects.feature.home.homeUi)
     implementation(projects.feature.main.mainUi)
     implementation(projects.feature.results.resultsUi)
     implementation(projects.feature.schedule.scheduleUi)
