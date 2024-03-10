@@ -50,6 +50,7 @@ include(
     ":data:seasons:seasons-api",
     ":data:seasons:seasons-di",
     ":data:seasons:seasons-impl",
+    ":feature:home:home-ui",
     ":feature:main:main-ui",
     ":feature:results:results-ui",
     ":feature:schedule:schedule-ui",
