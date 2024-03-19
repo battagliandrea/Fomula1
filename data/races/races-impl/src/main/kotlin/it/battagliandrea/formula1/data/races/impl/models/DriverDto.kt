@@ -32,7 +32,7 @@ fun DriverDto?.mapToDomain(): Driver =
         code = this?.code.orEmpty(),
         name = this?.givenName.orEmpty(),
         lastName = this?.familyName.orEmpty(),
-        dateOfBirth = this?.dateOfBirth?.toLocalDate(),
+        dateOfBirth = if (!this?.dateOfBirth.isNullOrEmpty()) this?.dateOfBirth?.toLocalDate() else null,
         nationality = this?.nationality.orEmpty(),
         url = this?.url.orEmpty(),
     )

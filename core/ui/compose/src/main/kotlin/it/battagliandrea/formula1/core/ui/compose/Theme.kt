@@ -2,22 +2,21 @@ package it.battagliandrea.formula1.core.ui.compose
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import it.battagliandrea.formula1.core.ui.compose.Formula1ColorSchemes.Dark
+import it.battagliandrea.formula1.core.ui.compose.Formula1ColorSchemes.Light
 
 @Composable
 fun Formula1Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-    val configuration = LocalConfiguration.current
-    val color = if (darkTheme) DarkColors else LightColors
-    val dimensions = if (configuration.screenWidthDp <= 360) smallDimensions else sw360Dimensions
+    val color = if (darkTheme) buildThemeColors(colorScheme = Dark) else buildThemeColors(colorScheme = Light)
+    val dimensions = defaultDimensions
 
     val view = LocalView.current
     if (!view.isInEditMode) {
@@ -29,27 +28,16 @@ fun Formula1Theme(
     }
 
     ProvideDimens(dimensions = dimensions) {
-        ProvideColors(color = color) {
-            MaterialTheme(
-                colorScheme = color,
-                typography = Typography,
-                content = content,
-                shapes = shapes,
-            )
-        }
+        ProvideColors(color = color, content = content)
     }
 }
 
 object Formula1Theme {
-    val colors: Dimensions
+    val colors: Formula1ThemeColors
         @Composable
-        get() = LocalAppDimens.current
+        get() = LocalAppColors.current
 
     val dimens: Dimensions
         @Composable
         get() = LocalAppDimens.current
 }
-
-val Dimens: Dimensions
-    @Composable
-    get() = Formula1Theme.dimens

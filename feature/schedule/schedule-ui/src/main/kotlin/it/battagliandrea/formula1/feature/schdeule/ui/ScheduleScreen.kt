@@ -2,7 +2,6 @@ package it.battagliandrea.formula1.feature.schdeule.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -10,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import it.battagliandrea.formula1.core.ui.compose.Formula1Theme.colors
 import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleContract.SideEffect
 import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleContract.UiAction
 import it.battagliandrea.formula1.feature.schdeule.ui.ScheduleContract.UiState
@@ -40,7 +40,7 @@ fun ScheduleScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxSize(),
-            color = MaterialTheme.colorScheme.background,
+            color = colors.background,
         ) {
             Text(text = "This is the schedule screen!")
         }

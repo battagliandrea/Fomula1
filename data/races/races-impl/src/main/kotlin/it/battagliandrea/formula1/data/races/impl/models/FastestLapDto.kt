@@ -10,7 +10,7 @@ data class FastestLapDto(
     val rank: Int? = null,
     @SerialName("lap")
     val lap: Int? = null,
-    @SerialName("time")
+    @SerialName("Time")
     val time: LapTimeDto? = null,
     @SerialName("AverageSpeed")
     val averageSpeed: AverageSpeedDto? = null,

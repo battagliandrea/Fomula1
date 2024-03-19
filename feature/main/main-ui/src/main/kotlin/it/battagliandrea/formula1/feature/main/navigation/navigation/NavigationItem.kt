@@ -4,10 +4,10 @@ import it.battagliandrea.formula1.core.ui.resources.R
 
 internal sealed class NavigationItem(val route: String, val iconRes: Int, val label: String) {
 
-    data object Results : NavigationItem(
-        route = "results",
-        iconRes = R.drawable.ic_results,
-        label = "Results",
+    data object Home : NavigationItem(
+        route = "home",
+        iconRes = R.drawable.ic_home,
+        label = "Home",
     )
     data object Schedule : NavigationItem(
         route = "schedule",
