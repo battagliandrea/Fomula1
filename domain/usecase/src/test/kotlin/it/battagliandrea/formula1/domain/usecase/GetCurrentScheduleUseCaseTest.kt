@@ -10,8 +10,8 @@ import it.battagliandrea.formula1.core.test.MainDispatcherRule
 import it.battagliandrea.formula1.data.races.api.repository.ISchedulesRepository
 import it.battagliandrea.formula1.domain.models.ErrorType
 import it.battagliandrea.formula1.domain.models.Race
-import it.battagliandrea.formula1.domain.models.ResultsMock.mockRaceList
 import it.battagliandrea.formula1.domain.models.SessionType
+import it.battagliandrea.formula1.domain.models.mock.ResultsMock.mockRaceList
 import it.battagliandrea.formula1.domain.usecase.internal.GetCurrentScheduleUseCase
 import it.battagliandrea.formula1.domain.usecase.internal.GetCurrentScheduleUseCase.Params
 import kotlinx.coroutines.flow.flow
