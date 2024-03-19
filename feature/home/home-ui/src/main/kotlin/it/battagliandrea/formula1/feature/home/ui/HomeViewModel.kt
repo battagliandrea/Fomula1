@@ -7,12 +7,14 @@ import it.battagliandrea.formula1.core.ui.mvi.MVI
 import it.battagliandrea.formula1.core.ui.mvi.mvi
 import it.battagliandrea.formula1.domain.models.ErrorType
 import it.battagliandrea.formula1.domain.models.Result
+import it.battagliandrea.formula1.domain.models.toPodium
 import it.battagliandrea.formula1.domain.usecase.GetCurrentLastResultUseCase
+import it.battagliandrea.formula1.feature.home.ui.HomeContract.NextRaceUiState
+import it.battagliandrea.formula1.feature.home.ui.HomeContract.RecentResultUiState
 import it.battagliandrea.formula1.feature.home.ui.HomeContract.SideEffect
 import it.battagliandrea.formula1.feature.home.ui.HomeContract.UiAction
 import it.battagliandrea.formula1.feature.home.ui.HomeContract.UiAction.OnResultClick
 import it.battagliandrea.formula1.feature.home.ui.HomeContract.UiState
-import it.battagliandrea.formula1.feature.home.ui.HomeContract.UiState.Success
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -35,7 +37,7 @@ class HomeViewModel @Inject constructor(
     private fun observeLastResults() {
         viewModelScope.launch {
             getCurrentLastResultUseCase.execute(params = GetCurrentLastResultUseCase.Params)
-                .onStart { UiState.Loading }
+                .onStart { RecentResultUiState.Loading }
                 .collect { either ->
                     either.fold(
                         ifRight = ::toSuccessState,
@@ -46,15 +48,19 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun toSuccessState(results: List<Result>) {
-        updateUiState(
-            Success(
-                lastResults = results.take(3),
-            ),
-        )
+        updateUiState {
+            copy(
+                recentResultUiState = RecentResultUiState.Success(
+                    podium = results.toPodium(),
+                ),
+            )
+        }
     }
 
     private fun toFailureState(errorType: ErrorType) {
-        updateUiState(UiState.Failure)
+        updateUiState {
+            copy(recentResultUiState = RecentResultUiState.Failure)
+        }
     }
 
     private fun handleOnResultClick() {
@@ -62,4 +68,7 @@ class HomeViewModel @Inject constructor(
 }
 
 private fun initialUiState() =
-    UiState.Loading
+    UiState(
+        nextRaceUiState = NextRaceUiState.Loading,
+        recentResultUiState = RecentResultUiState.Loading,
+    )

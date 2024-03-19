@@ -1,13 +1,24 @@
 package it.battagliandrea.formula1.feature.home.ui
 
-import it.battagliandrea.formula1.domain.models.Result
+import it.battagliandrea.formula1.domain.models.Podium
 
 class HomeContract {
 
-    sealed class UiState {
-        data class Success(val lastResults: List<Result>) : UiState()
-        data object Failure : UiState()
-        data object Loading : UiState()
+    data class UiState(
+        val nextRaceUiState: NextRaceUiState,
+        val recentResultUiState: RecentResultUiState,
+    )
+
+    sealed class NextRaceUiState {
+        data object Success : NextRaceUiState()
+        data object Failure : NextRaceUiState()
+        data object Loading : NextRaceUiState()
+    }
+
+    sealed class RecentResultUiState {
+        data class Success(val podium: Podium) : RecentResultUiState()
+        data object Failure : RecentResultUiState()
+        data object Loading : RecentResultUiState()
     }
 
     sealed interface UiAction {
