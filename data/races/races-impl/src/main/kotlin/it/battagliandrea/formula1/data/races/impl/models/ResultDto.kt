@@ -24,7 +24,7 @@ data class ResultDto(
     val laps: Int? = null,
     @SerialName("status")
     val status: String? = null,
-    @SerialName("time")
+    @SerialName("Time")
     val time: RaceTimeDto? = null,
     @SerialName("FastestLap")
     val fastestLap: FastestLapDto? = null,
