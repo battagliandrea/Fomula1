@@ -1,6 +1,8 @@
 package it.battagliandrea.formula1.feature.main.navigation
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,8 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -32,8 +34,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import it.battagliandrea.formula1.core.ui.compose.Formula1Theme
+import it.battagliandrea.formula1.core.ui.compose.Formula1Theme.colors
 import it.battagliandrea.formula1.core.ui.compose.Formula1Theme.dimens
-import it.battagliandrea.formula1.core.ui.compose.topRoundedCornerShapes
 import it.battagliandrea.formula1.core.ui.resources.R
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Home
 import it.battagliandrea.formula1.feature.main.navigation.navigation.NavigationItem.Schedule
@@ -51,6 +53,7 @@ internal fun MainScreen(
 
     Scaffold(
         modifier = modifier,
+        containerColor = colors.background,
         topBar = {
             MainTopBar()
         },
@@ -62,6 +65,7 @@ internal fun MainScreen(
         },
         content = { innerPadding ->
             MainContent(
+                modifier = Modifier.fillMaxSize(),
                 navController = navController,
                 startDestination = startDestination,
                 innerPadding = innerPadding,
@@ -77,16 +81,16 @@ private fun MainTopBar(
 ) {
     Column(
         modifier = modifier
-            .height(dimens.minimum_toolbar_height)
+            .height(dimens.minimumToolbarHeight)
             .fillMaxWidth()
-            .padding(horizontal = dimens.grid_2, vertical = dimens.grid_1),
+            .padding(horizontal = dimens.spacind_s, vertical = dimens.spacing_2xs),
         verticalArrangement = Arrangement.Center,
     ) {
         Image(
             modifier = Modifier.fillMaxHeight(),
             painter = painterResource(R.drawable.f1_logo),
             contentDescription = "",
-            colorFilter = ColorFilter.tint(colorScheme.primary),
+            colorFilter = ColorFilter.tint(colors.brand),
             contentScale = ContentScale.Fit,
             alignment = Alignment.BottomStart,
         )
@@ -102,21 +106,24 @@ private fun MainBottomBar(
     val acceptedItems = listOf(Home, Schedule, Standings)
 
     Surface(
-        shape = topRoundedCornerShapes.large,
+        shape = RoundedCornerShape(
+            topStart = dimens.roundCorner_M,
+            topEnd = dimens.roundCorner_M,
+        ),
     ) {
         NavigationBar(
             modifier = modifier,
-            containerColor = colorScheme.tertiary,
+            containerColor = colors.primary,
         ) {
             acceptedItems.forEach { item ->
                 NavigationBarItem(
                     selected = navigationBarCurrentItem == item.route,
                     colors = NavigationBarItemDefaults.colors(
-                        indicatorColor = colorScheme.tertiary,
-                        selectedIconColor = colorScheme.onTertiary,
-                        unselectedIconColor = colorScheme.onTertiaryContainer,
-                        selectedTextColor = colorScheme.onTertiary,
-                        unselectedTextColor = colorScheme.onTertiaryContainer,
+                        indicatorColor = colors.primary,
+                        selectedIconColor = colors.onPrimary,
+                        selectedTextColor = colors.onPrimary,
+                        unselectedIconColor = colors.onPrimaryUnselected,
+                        unselectedTextColor = colors.onPrimaryUnselected,
                     ),
                     onClick = {
                         navController.navigate(item.route) {
@@ -150,7 +157,7 @@ private fun MainContent(
     Column(
         modifier = modifier
             .padding(innerPadding),
-        verticalArrangement = Arrangement.spacedBy(dimens.grid_2),
+        verticalArrangement = Arrangement.spacedBy(dimens.spacind_s),
     ) {
         NavHost(
             navController = navController,
@@ -160,7 +167,16 @@ private fun MainContent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    name = "Dark Mode",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+)
+@Preview(
+    name = "Light Mode",
+    showBackground = true,
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+)
 @Composable
 fun MainScreenPreview() {
     Formula1Theme {
@@ -168,8 +184,8 @@ fun MainScreenPreview() {
             startDestination = "home",
             modifier = Modifier.fillMaxSize(),
         ) {
-            composable(route = "results") {
-                Text(text = "Result Screen")
+            composable(route = "home") {
+                Text(text = "Home Screen")
             }
         }
     }
